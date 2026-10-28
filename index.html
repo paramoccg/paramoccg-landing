@@ -72,7 +72,7 @@
             text-align: center;
             padding: 120px 20px 80px;
             /* Sincronizado con el JS para que no parpadee */
-            background: linear-gradient(to bottom, rgba(9,9,9,0.8), rgba(9,9,9,1)), url('img/es/12.jpg') center/cover;
+            background: linear-gradient(to bottom, rgba(9,9,9,0.8), rgba(9,9,9,1)), url('img/Paramo.jpg') center/cover;
             border-bottom: 3px solid var(--accent);
         }
         .hero h1 {
@@ -194,15 +194,16 @@
            ========================================= */
         .clans-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 30px;
+            /* Forzamos 5 columnas en pantallas grandes para que quepan todos en una fila */
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 15px; /* Reducimos un poco el hueco para que no se aprieten */
         }
         
         .clan-card {
             position: relative;
             border-radius: 12px;
-            overflow: hidden; /* Clave para que el texto no se salga al bajar */
-            aspect-ratio: 2.5 / 3.5; /* Proporción estándar de una carta */
+            overflow: hidden; 
+            aspect-ratio: 2.5 / 3.5; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             transition: transform 0.3s ease;
             cursor: pointer;
@@ -223,7 +224,7 @@
         }
 
         .clan-card:hover .clan-image {
-            transform: scale(1.05); /* Sutil zoom en la carta */
+            transform: scale(1.05);
         }
 
         .clan-info {
@@ -231,46 +232,41 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 55%; /* Cubre la mitad inferior de la carta */
-            background: rgba(15, 15, 15, 0.95); /* Fondo casi opaco para tapar el texto original */
-            padding: 25px 20px;
+            height: 55%; 
+            background: rgba(15, 15, 15, 0.95); 
+            padding: 20px 15px; /* Ajustado para cartas más estrechas */
             display: flex;
             flex-direction: column;
             justify-content: center;
             border-top: 3px solid transparent;
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateY(0); /* Posición inicial */
+            transform: translateY(0); 
         }
 
-        /* Animación al pasar el ratón: el texto baja y desaparece */
         .clan-card:hover .clan-info {
             transform: translateY(100%);
         }
 
-        .clan-info h3 { font-size: 1.8rem; margin-bottom: 5px; letter-spacing: 1px; }
+        .clan-info h3 { font-size: 1.5rem; margin-bottom: 5px; letter-spacing: 1px; }
         
         .clan-info .resource {
-            font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
             color: #fff; background: rgba(255,255,255,0.1);
-            display: inline-block; padding: 3px 10px; border-radius: 4px; margin-bottom: 12px;
+            display: inline-block; padding: 3px 8px; border-radius: 4px; margin-bottom: 10px;
             align-self: flex-start;
         }
         
-        .clan-info p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; }
+        .clan-info p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; }
 
-        /* Colores específicos por clan (Borde superior y título) */
+        /* Colores específicos por clan */
         .asfalto .clan-info { border-top-color: var(--asfalto); }
         .asfalto h3 { color: var(--asfalto); }
-        
         .polvora .clan-info { border-top-color: var(--polvora); }
         .polvora h3 { color: var(--polvora); }
-        
         .sombra .clan-info { border-top-color: var(--sombra); }
         .sombra h3 { color: var(--sombra); }
-        
         .horda .clan-info { border-top-color: var(--horda); }
         .horda h3 { color: var(--horda); }
-        
         .abismo .clan-info { border-top-color: var(--abismo); }
         .abismo h3 { color: var(--abismo); }
 
@@ -282,6 +278,11 @@
         footer a { color: var(--accent); text-decoration: none; }
 
         /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            /* En tablets, pasamos a 3 columnas */
+            .clans-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 4rem; }
             .lore-split { flex-direction: column; }
@@ -289,7 +290,8 @@
             .feature-item:last-child { border-bottom: none; }
             .lang-switch { top: 10px; right: 10px; }
             
-            /* En móviles, el texto siempre está visible o se toca para ver */
+            /* En móviles, 1 columna para los clanes */
+            .clans-grid { grid-template-columns: 1fr; }
             .clan-info { height: auto; position: relative; transform: none; background: var(--bg-card); }
             .clan-card:hover .clan-info { transform: none; }
             .clan-image { position: relative; height: auto; aspect-ratio: 2.5/3.5; }
@@ -309,7 +311,7 @@
         <div class="container">
             <h2 data-i18n="hero_subtitle">El Juego de Cartas Coleccionables</h2>
             <h1>Páramo CCG</h1>
-            <p data-i18n="hero_desc">El mundo de Vergel cayó...</p>
+            <p data-i18n="hero_desc">La brecha se abrió y llegaron los invasores...</p>
             
             <div class="store-buttons">
                 <a href="#" class="btn">
@@ -333,23 +335,23 @@
         <div class="container features-container">
             <div class="feature-item">
                 <h3 data-i18n="feat_clans_title">5 Clanes</h3>
-                <p data-i18n="feat_clans_desc">Identidades únicas</p>
+                <p data-i18n="feat_clans_desc">Asfalto, Pólvora, Sombra, Horda y Abismo</p>
             </div>
             <div class="feature-item">
-                <h3 data-i18n="feat_boss_title">1 Jefe</h3>
-                <p data-i18n="feat_boss_desc">Comandantes tácticos</p>
+                <h3 data-i18n="feat_boss_title">51 cartas</h3>
+                <p data-i18n="feat_boss_desc">1 JEFE PRINCIPAL y 1 ENCLAVE</p>
             </div>
             <div class="feature-item">
-                <h3 data-i18n="feat_enclaves_title">Enclaves</h3>
-                <p data-i18n="feat_enclaves_desc">Control estratégico</p>
+                <h3 data-i18n="feat_enclaves_title">MODO TALLER</h3>
+                <p data-i18n="feat_enclaves_desc">CREA Y DESTRUYE CARTAS</p>
             </div>
             <div class="feature-item">
-                <h3 data-i18n="feat_easy_title">Fácil de Aprender</h3>
-                <p data-i18n="feat_easy_desc">Mecánicas intuitivas</p>
+                <h3 data-i18n="feat_easy_title">COMPETITIVO</h3>
+                <p data-i18n="feat_easy_desc">RANKING Y TORNEOS</p>
             </div>
             <div class="feature-item">
-                <h3 data-i18n="feat_hard_title">Difícil de Dominar</h3>
-                <p data-i18n="feat_hard_desc">Profundidad táctica</p>
+                <h3 data-i18n="feat_hard_title">SOCIAL</h3>
+                <p data-i18n="feat_hard_desc">AMIGOS Y ALIANZAS</p>
             </div>
         </div>
     </section>
@@ -363,33 +365,41 @@
                 <p data-i18n="lore_p2">En un intento desesperado...</p>
                 <p data-i18n="lore_p3">Hoy, este mundo infernal es conocido como <span class="highlight">Páramo</span>...</p>
             </div>
-            <!-- IMAGEN LORE: Sincronizada con el JS de español para evitar parpadeo -->
             <div class="img-box">
                 <img data-i18n-src="lore_img_src" src="img/es/11.jpg" alt="Historia de Páramo">
             </div>
         </div>
     </section>
 
-    <!-- MECÁNICAS DEL JUEGO -->
+    <!-- MECÁNICAS DEL JUEGO (AHORA 6 RECUADROS) -->
     <section class="mechanics">
         <div class="container">
             <h2 class="section-title" data-i18n="mech_title">Mecánicas del Juego</h2>
             <div class="mechanics-grid">
                 <div class="mech-card">
-                    <h3 data-i18n="mech_1_title">Gestación de Recursos</h3>
-                    <p data-i18n="mech_1_desc">Olvídate de las cartas de tierra...</p>
+                    <h3 data-i18n="mech_1_title">RECURSOS JUSTOS</h3>
+                    <p data-i18n="mech_1_desc">Incrementa tus recursos cada turno de forma automática</p>
                 </div>
                 <div class="mech-card">
-                    <h3 data-i18n="mech_2_title">Mazo y Jefe</h3>
-                    <p data-i18n="mech_2_desc">Construye un mazo de exactamente 50 cartas...</p>
+                    <h3 data-i18n="mech_2_title">PROTECCIÓN</h3>
+                    <p data-i18n="mech_2_desc">No recibirás más copias de una carta de las que puedes jugar.</p>
                 </div>
                 <div class="mech-card">
-                    <h3 data-i18n="mech_3_title">Sistema de Iniciativa</h3>
-                    <p data-i18n="mech_3_desc">Las respuestas rápidas se rigen por la pila (LIFO)...</p>
+                    <h3 data-i18n="mech_3_title">7 TIPOS DE CARTAS</h3>
+                    <p data-i18n="mech_3_desc">Organismos, transportes, mods, acciones, despliegues, enclaves y jefes</p>
                 </div>
                 <div class="mech-card">
-                    <h3 data-i18n="mech_4_title">Tácticas y Mods</h3>
-                    <p data-i18n="mech_4_desc">Tripula transportes, acopla mods...</p>
+                    <h3 data-i18n="mech_4_title">ACCESIBLE</h3>
+                    <p data-i18n="mech_4_desc">Regalo inicial de 200 de agua, ticket limitado, sobres y un mazo completo de 51 cartas con jefe y enclave incluidos</p>
+                </div>
+                <!-- NUEVOS PANELES -->
+                <div class="mech-card">
+                    <h3 data-i18n="mech_5_title">DRAFT</h3>
+                    <p data-i18n="mech_5_desc">Elige cartas de sobres aleatorios en el modo limitado para construir tu mazo</p>
+                </div>
+                <div class="mech-card">
+                    <h3 data-i18n="mech_6_title">LOGROS</h3>
+                    <p data-i18n="mech_6_desc">Consigue cientos de sobres solo por jugar y completar retos desafiantes</p>
                 </div>
             </div>
         </div>
@@ -402,7 +412,7 @@
         </div>
     </div>
 
-    <!-- LOS CLANES (NUEVO DISEÑO) -->
+    <!-- LOS CLANES (5 EN UNA FILA) -->
     <section class="container">
         <h2 class="section-title" data-i18n="clans_title">Los 5 Clanes</h2>
         <p style="text-align: center; color: var(--text-muted); margin-bottom: 30px; font-size: 1.1rem;">Pasa el ratón por encima para ver la carta completa</p>
@@ -468,13 +478,13 @@
         const translations = {
             es: {
                 hero_subtitle: "El Juego de Cartas Coleccionables",
-                hero_desc: "El mundo de Vergel cayó. La Brecha se abrió. Cinco facciones luchan por el control de un erial devastado por la radiación y la magia. ¿Liderarás a tu clan hacia la gloria o serás devorado por el yermo?",
+                hero_desc: "La brecha se abrió y llegaron los invasores. Ahora, cinco clanes luchan por el agua, la gasolina y la supervivencia",
                 
-                feat_clans_title: "5 Clanes", feat_clans_desc: "Identidades únicas",
-                feat_boss_title: "1 Jefe", feat_boss_desc: "Comandantes tácticos",
-                feat_enclaves_title: "Enclaves", feat_enclaves_desc: "Control estratégico",
-                feat_easy_title: "Fácil de Aprender", feat_easy_desc: "Mecánicas intuitivas",
-                feat_hard_title: "Difícil de Dominar", feat_hard_desc: "Profundidad táctica",
+                feat_clans_title: "5 Clanes", feat_clans_desc: "Asfalto, Pólvora, Sombra, Horda y Abismo",
+                feat_boss_title: "51 cartas", feat_boss_desc: "1 JEFE PRINCIPAL y 1 ENCLAVE",
+                feat_enclaves_title: "MODO TALLER", feat_enclaves_desc: "CREA Y DESTRUYE CARTAS",
+                feat_easy_title: "COMPETITIVO", feat_easy_desc: "RANKING Y TORNEOS",
+                feat_hard_title: "SOCIAL", feat_hard_desc: "AMIGOS Y ALIANZAS",
 
                 lore_title: "El Fin de Vergel",
                 lore_p1: 'El mundo de <strong>Vergel</strong> era un lugar pacífico, repleto de grandes ciudades. Pero un día, el cielo se rompió. <span class="highlight">La Brecha</span> se abrió y liberó a monstruos de pesadilla interdimensionales.',
@@ -482,10 +492,12 @@
                 lore_p3: 'Hoy, este mundo infernal es conocido como <span class="highlight">Páramo</span>. La supervivencia depende de la ley del más fuerte y de elegir un bando en la guerra eterna por los últimos recursos.',
                 
                 mech_title: "Mecánicas del Juego",
-                mech_1_title: "Gestación de Recursos", mech_1_desc: "Olvídate de las cartas de tierra. Tus recursos aumentan automáticamente +1 al inicio de cada turno. ¡La batalla escala rápido!",
-                mech_2_title: "Mazo y Jefe", mech_2_desc: "Construye un mazo de exactamente 50 cartas y elige a tu Jefe. Comienzas con 20 puntos de vida. El objetivo: reducir los del rival a cero.",
-                mech_3_title: "Sistema de Iniciativa", mech_3_desc: "Las respuestas rápidas se rigen por la pila (LIFO). Juega acciones, responde a tu rival y engaña a tus oponentes en tiempo real.",
-                mech_4_title: "Tácticas y Mods", mech_4_desc: "Tripula transportes, acopla mods para potenciar a tus tropas y utiliza el ímpetu, reflejos o camuflaje para tomar ventaja.",
+                mech_1_title: "RECURSOS JUSTOS", mech_1_desc: "Incrementa tus recursos cada turno de forma automática",
+                mech_2_title: "PROTECCIÓN", mech_2_desc: "No recibirás más copias de una carta de las que puedes jugar.",
+                mech_3_title: "7 TIPOS DE CARTAS", mech_3_desc: "Organismos, transportes, mods, acciones, despliegues, enclaves y jefes",
+                mech_4_title: "ACCESIBLE", mech_4_desc: "Regalo inicial de 200 de agua, ticket limitado, sobres y un mazo completo de 51 cartas con jefe y enclave incluidos",
+                mech_5_title: "DRAFT", mech_5_desc: "Elige cartas de sobres aleatorios en el modo limitado para construir tu mazo",
+                mech_6_title: "LOGROS", mech_6_desc: "Consigue cientos de sobres solo por jugar y completar retos desafiantes",
                 
                 clans_title: "Los 5 Clanes",
                 clan_asfalto_name: "Asfalto", clan_asfalto_res: "Gasolina", clan_asfalto_desc: "Nómadas humanos obsesionados con la velocidad. Usan vehículos modificados y asaltos relámpago para aplastar a sus enemigos.",
@@ -508,13 +520,13 @@
             },
             en: {
                 hero_subtitle: "The Collectible Card Game",
-                hero_desc: "The world of Vergel fell. The Rift opened. Five factions fight for control of a wasteland devastated by radiation and magic. Will you lead your clan to glory or be devoured by the wasteland?",
+                hero_desc: "The Rift opened and the invaders arrived. Now, five clans fight for water, gasoline, and survival",
                 
-                feat_clans_title: "5 Clans", feat_clans_desc: "Unique identities",
-                feat_boss_title: "1 Boss", feat_boss_desc: "Tactical commanders",
-                feat_enclaves_title: "Enclaves", feat_enclaves_desc: "Strategic control",
-                feat_easy_title: "Easy to Learn", feat_easy_desc: "Intuitive mechanics",
-                feat_hard_title: "Hard to Master", feat_hard_desc: "Tactical depth",
+                feat_clans_title: "5 Clans", feat_clans_desc: "Asphalt, Gunpowder, Shadow, Horde, and Abyss",
+                feat_boss_title: "51 cards", feat_boss_desc: "1 MAIN BOSS and 1 ENCLAVE",
+                feat_enclaves_title: "WORKSHOP MODE", feat_enclaves_desc: "CREATE AND DESTROY CARDS",
+                feat_easy_title: "COMPETITIVE", feat_easy_desc: "RANKING AND TOURNAMENTS",
+                feat_hard_title: "SOCIAL", feat_hard_desc: "FRIENDS AND ALLIANCES",
 
                 lore_title: "The End of Vergel",
                 lore_p1: 'The world of <strong>Vergel</strong> was a peaceful place, full of great cities. But one day, the sky broke. <span class="highlight">The Rift</span> opened and released interdimensional nightmare monsters.',
@@ -522,10 +534,12 @@
                 lore_p3: 'Today, this hellish world is known as <span class="highlight">Páramo</span>. Survival depends on the law of the strongest and choosing a side in the eternal war for the last resources.',
 
                 mech_title: "Game Mechanics",
-                mech_1_title: "Resource Generation", mech_1_desc: "Forget land cards. Your resources automatically increase +1 at the start of each turn. The battle escalates quickly!",
-                mech_2_title: "Deck and Boss", mech_2_desc: "Build a deck of exactly 50 cards and choose your Boss. You start with 20 life points. The goal: reduce your opponent's to zero.",
-                mech_3_title: "Initiative System", mech_3_desc: "Fast responses are governed by the stack (LIFO). Play actions, respond to your rival, and trick your opponents in real time.",
-                mech_4_title: "Tactics and Mods", mech_4_desc: "Crew transports, attach mods to buff your troops, and use haste, reflexes, or camouflage to gain an advantage.",
+                mech_1_title: "FAIR RESOURCES", mech_1_desc: "Increase your resources automatically each turn",
+                mech_2_title: "PROTECTION", mech_2_desc: "You won't receive more copies of a card than you can play.",
+                mech_3_title: "7 CARD TYPES", mech_3_desc: "Organisms, transports, mods, actions, deployments, enclaves, and bosses",
+                mech_4_title: "ACCESSIBLE", mech_4_desc: "Initial gift of 200 water, limited ticket, packs, and a complete 51-card deck including boss and enclave",
+                mech_5_title: "DRAFT", mech_5_desc: "Choose cards from random packs in limited mode to build your deck",
+                mech_6_title: "ACHIEVEMENTS", mech_6_desc: "Get hundreds of packs just for playing and completing challenging challenges",
                 
                 clans_title: "The 5 Clans",
                 clan_asfalto_name: "Asphalt", clan_asfalto_res: "Gasoline", clan_asfalto_desc: "Human nomads obsessed with speed. They use modified vehicles and lightning raids to crush their enemies.",
@@ -572,9 +586,8 @@
                 }
             });
 
-            // 4. Fondo de la cabecera (Hero) - SIN PARPADEOS
+            // 4. Fondo de la cabecera (Hero)
             const heroBg = document.getElementById('hero-bg');
-            // Usamos la imagen 12.jpg para español y la misma u otra para inglés
             const heroBgSrc = lang === 'es' ? 'img/es/10.jpg' : 'img/en/12.png'; 
             heroBg.style.background = `linear-gradient(to bottom, rgba(9,9,9,0.8), rgba(9,9,9,1)), url('${heroBgSrc}') center/cover`;
 
