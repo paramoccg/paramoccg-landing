@@ -71,8 +71,7 @@
         .hero {
             text-align: center;
             padding: 120px 20px 80px;
-            /* Sincronizado con el JS para que no parpadee */
-            background: linear-gradient(to bottom, rgba(9,9,9,0.8), rgba(9,9,9,1)), url('img/Paramo.jpg') center/cover;
+            background: linear-gradient(to bottom, rgba(9,9,9,0.8), rgba(9,9,9,1)), url('img/es/12.jpg') center/cover;
             border-bottom: 3px solid var(--accent);
         }
         .hero h1 {
@@ -189,14 +188,11 @@
         .mech-card h3 { color: var(--accent); font-size: 1.4rem; margin-bottom: 10px; }
         .mech-card p { font-size: 0.95rem; color: var(--text-muted); }
 
-        /* =========================================
-           NUEVA SECCIÓN DE CLANES CON EFECTO CORTINA
-           ========================================= */
+        /* CLANES SECTION */
         .clans-grid {
             display: grid;
-            /* Forzamos 5 columnas en pantallas grandes para que quepan todos en una fila */
             grid-template-columns: repeat(5, 1fr); 
-            gap: 15px; /* Reducimos un poco el hueco para que no se aprieten */
+            gap: 15px; 
         }
         
         .clan-card {
@@ -234,7 +230,7 @@
             width: 100%;
             height: 55%; 
             background: rgba(15, 15, 15, 0.95); 
-            padding: 20px 15px; /* Ajustado para cartas más estrechas */
+            padding: 20px 15px; 
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -279,7 +275,6 @@
 
         /* RESPONSIVE */
         @media (max-width: 1024px) {
-            /* En tablets, pasamos a 3 columnas */
             .clans-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
         }
 
@@ -290,7 +285,6 @@
             .feature-item:last-child { border-bottom: none; }
             .lang-switch { top: 10px; right: 10px; }
             
-            /* En móviles, 1 columna para los clanes */
             .clans-grid { grid-template-columns: 1fr; }
             .clan-info { height: auto; position: relative; transform: none; background: var(--bg-card); }
             .clan-card:hover .clan-info { transform: none; }
@@ -365,13 +359,14 @@
                 <p data-i18n="lore_p2">En un intento desesperado...</p>
                 <p data-i18n="lore_p3">Hoy, este mundo infernal es conocido como <span class="highlight">Páramo</span>...</p>
             </div>
+            <!-- Añadido loading="lazy" -->
             <div class="img-box">
-                <img data-i18n-src="lore_img_src" src="img/es/11.jpg" alt="Historia de Páramo">
+                <img data-i18n-src="lore_img_src" src="img/es/11.jpg" alt="Historia de Páramo" loading="lazy">
             </div>
         </div>
     </section>
 
-    <!-- MECÁNICAS DEL JUEGO (AHORA 6 RECUADROS) -->
+    <!-- MECÁNICAS DEL JUEGO -->
     <section class="mechanics">
         <div class="container">
             <h2 class="section-title" data-i18n="mech_title">Mecánicas del Juego</h2>
@@ -392,7 +387,6 @@
                     <h3 data-i18n="mech_4_title">ACCESIBLE</h3>
                     <p data-i18n="mech_4_desc">Regalo inicial de 200 de agua, ticket limitado, sobres y un mazo completo de 51 cartas con jefe y enclave incluidos</p>
                 </div>
-                <!-- NUEVOS PANELES -->
                 <div class="mech-card">
                     <h3 data-i18n="mech_5_title">DRAFT</h3>
                     <p data-i18n="mech_5_desc">Elige cartas de sobres aleatorios en el modo limitado para construir tu mazo</p>
@@ -408,11 +402,12 @@
     <!-- IMAGEN CENTRAL -->
     <div class="container" style="padding: 40px 20px;">
         <div class="img-box" style="height: 400px; flex: none;">
-            <img data-i18n-src="mid_img_src" src="img/es/8.png" alt="Arte promocional">
+            <!-- Añadido loading="lazy" -->
+            <img data-i18n-src="mid_img_src" src="img/es/8.png" alt="Arte promocional" loading="lazy">
         </div>
     </div>
 
-    <!-- LOS CLANES (5 EN UNA FILA) -->
+    <!-- LOS CLANES -->
     <section class="container">
         <h2 class="section-title" data-i18n="clans_title">Los 5 Clanes</h2>
         <p style="text-align: center; color: var(--text-muted); margin-bottom: 30px; font-size: 1.1rem;">Pasa el ratón por encima para ver la carta completa</p>
@@ -420,7 +415,8 @@
         <div class="clans-grid">
             
             <div class="clan-card asfalto">
-                <img class="clan-image" data-i18n-src="clan_img_asfalto_src" src="img/es/asfalto.png" alt="Asfalto">
+                <!-- Añadido loading="lazy" -->
+                <img class="clan-image" data-i18n-src="clan_img_asfalto_src" src="img/es/asfalto.png" alt="Asfalto" loading="lazy">
                 <div class="clan-info">
                     <h3 data-i18n="clan_asfalto_name">Asfalto</h3>
                     <span class="resource" data-i18n="clan_asfalto_res">Gasolina</span>
@@ -429,7 +425,7 @@
             </div>
 
             <div class="clan-card polvora">
-                <img class="clan-image" data-i18n-src="clan_img_polvora_src" src="img/es/polvora.png" alt="Pólvora">
+                <img class="clan-image" data-i18n-src="clan_img_polvora_src" src="img/es/polvora.png" alt="Pólvora" loading="lazy">
                 <div class="clan-info">
                     <h3 data-i18n="clan_polvora_name">Pólvora</h3>
                     <span class="resource" data-i18n="clan_polvora_res">Metal</span>
@@ -438,7 +434,7 @@
             </div>
 
             <div class="clan-card sombra">
-                <img class="clan-image" data-i18n-src="clan_img_sombra_src" src="img/es/sombra.png" alt="Sombra">
+                <img class="clan-image" data-i18n-src="clan_img_sombra_src" src="img/es/sombra.png" alt="Sombra" loading="lazy">
                 <div class="clan-info">
                     <h3 data-i18n="clan_sombra_name">Sombra</h3>
                     <span class="resource" data-i18n="clan_sombra_res">Estramonio</span>
@@ -447,7 +443,7 @@
             </div>
 
             <div class="clan-card horda">
-                <img class="clan-image" data-i18n-src="clan_img_horda_src" src="img/es/6.png" alt="Horda">
+                <img class="clan-image" data-i18n-src="clan_img_horda_src" src="img/es/6.png" alt="Horda" loading="lazy">
                 <div class="clan-info">
                     <h3 data-i18n="clan_horda_name">Horda</h3>
                     <span class="resource" data-i18n="clan_horda_res">Sangre</span>
@@ -456,7 +452,7 @@
             </div>
 
             <div class="clan-card abismo">
-                <img class="clan-image" data-i18n-src="clan_img_abismo_src" src="img/es/abismo.png" alt="Abismo">
+                <img class="clan-image" data-i18n-src="clan_img_abismo_src" src="img/es/abismo.png" alt="Abismo" loading="lazy">
                 <div class="clan-info">
                     <h3 data-i18n="clan_abismo_name">Abismo</h3>
                     <span class="resource" data-i18n="clan_abismo_res">Éter</span>
@@ -509,7 +505,6 @@
                 footer_rights: "&copy; 2026 Páramo CCG. Todos los derechos reservados.",
                 footer_contact: "Contacto:",
 
-                // Rutas Español
                 lore_img_src: "img/es/jefe.png",
                 mid_img_src: "img/es/5.png",
                 clan_img_asfalto_src: "img/es/asfalto.png",
@@ -551,7 +546,6 @@
                 footer_rights: "&copy; 2026 Páramo CCG. All rights reserved.",
                 footer_contact: "Contact:",
 
-                // Rutas Inglés
                 lore_img_src: "img/en/10.png",
                 mid_img_src: "img/en/9.jpg",
                 clan_img_asfalto_src: "img/en/asphalt.png",
@@ -563,12 +557,10 @@
         };
 
         function setLanguage(lang) {
-            // 1. Actualizar clases de los botones
             document.getElementById('btn-es').classList.remove('active');
             document.getElementById('btn-en').classList.remove('active');
             document.getElementById(`btn-${lang}`).classList.add('active');
 
-            // 2. Traducir todos los TEXTOS (data-i18n)
             const textElements = document.querySelectorAll('[data-i18n]');
             textElements.forEach(el => {
                 const key = el.getAttribute('data-i18n');
@@ -577,7 +569,6 @@
                 }
             });
 
-            // 3. Cambiar todas las IMÁGENES (data-i18n-src)
             const imgElements = document.querySelectorAll('[data-i18n-src]');
             imgElements.forEach(el => {
                 const key = el.getAttribute('data-i18n-src');
@@ -586,18 +577,28 @@
                 }
             });
 
-            // 4. Fondo de la cabecera (Hero)
             const heroBg = document.getElementById('hero-bg');
-            const heroBgSrc = lang === 'es' ? 'img/es/10.jpg' : 'img/Paramo.jpg'; 
+            const heroBgSrc = lang === 'es' ? 'img/es/10.jpg' : 'img/en/12.png'; 
             heroBg.style.background = `linear-gradient(to bottom, rgba(9,9,9,0.8), rgba(9,9,9,1)), url('${heroBgSrc}') center/cover`;
 
-            // 5. Guardar preferencia
             localStorage.setItem('paramo_lang', lang);
         }
 
-        // Cargar el idioma guardado al iniciar, o Español por defecto
+        // LÓGICA DE DETECCIÓN AUTOMÁTICA DE IDIOMA
         document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('paramo_lang') || 'es';
+            // 1. Verificamos si el usuario ya eligió un idioma antes
+            let savedLang = localStorage.getItem('paramo_lang');
+            
+            // 2. Si no hay nada guardado, detectamos el idioma del navegador
+            if (!savedLang) {
+                // navigator.language devuelve algo como 'es-ES', 'en-US', 'fr-FR', etc.
+                const browserLang = navigator.language || navigator.userLanguage;
+                
+                // Si el idioma empieza por 'es', ponemos español. Si no, inglés.
+                savedLang = browserLang.toLowerCase().startsWith('es') ? 'es' : 'en';
+            }
+            
+            // 3. Aplicamos el idioma detectado o guardado
             setLanguage(savedLang);
         });
     </script>
