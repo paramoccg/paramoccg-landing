@@ -411,7 +411,7 @@
         <p><span data-i18n="footer_contact">Contacto:</span> <a href="mailto:contact@paramoccg.com">contact@paramoccg.com</a></p>
     </footer>
 
-    <!-- SCRIPT DE TRADUCCIONES Y CAMBIO DE IMÁGENES -->
+        <!-- SCRIPT DE TRADUCCIONES Y CAMBIO DE IMÁGENES (CORREGIDO) -->
     <script>
         const translations = {
             es: {
@@ -442,17 +442,17 @@
                 clan_horda_name: "Horda", clan_horda_res: "Sangre", clan_horda_desc: "Invasores de La Brecha. Apuestan por la fuerza bruta, el ímpetu y tácticas de saturación usando chatarra y bestias.",
                 clan_abismo_name: "Abismo", clan_abismo_res: "Éter", clan_abismo_desc: "Horrores cósmicos sin forma. No luchan por territorio, sino por corromper la realidad. Debilitan la mente de sus oponentes.",
 
-                footer_rights: "&copy; 2024 Páramo CCG. Todos los derechos reservados.",
+                footer_rights: "&copy; 2026 Páramo CCG. Todos los derechos reservados.",
                 footer_contact: "Contacto:",
 
-                // RUTAS DE LAS IMÁGENES EN ESPAÑOL
-                lore_img_src: "img/es/lore.jpg",
-                mid_img_src: "img/es/promo.jpg",
-                clan_img_asfalto_src: "img/es/carta-asfalto.jpg",
-                clan_img_polvora_src: "img/es/carta-polvora.jpg",
-                clan_img_sombra_src: "img/es/carta-sombra.jpg",
-                clan_img_horda_src: "img/es/carta-horda.jpg",
-                clan_img_abismo_src: "img/es/carta-abismo.jpg"
+                // RUTAS DE LAS IMÁGENES EN ESPAÑOL (Basado en tu carpeta img/es/)
+                lore_img_src: "img/es/jefe.png",
+                mid_img_src: "img/es/5.png",
+                clan_img_asfalto_src: "img/es/asfalto.png",
+                clan_img_polvora_src: "img/es/polvora.png",
+                clan_img_sombra_src: "img/es/sombra.png",
+                clan_img_horda_src: "img/es/6.png",
+                clan_img_abismo_src: "img/es/abismo.png"
             },
             en: {
                 hero_subtitle: "The Collectible Card Game",
@@ -482,17 +482,17 @@
                 clan_horda_name: "Horde", clan_horda_res: "Blood", clan_horda_desc: "Invaders from The Rift. They rely on brute force, haste, and saturation tactics using scrap and beasts.",
                 clan_abismo_name: "Abyss", clan_abismo_res: "Aether", clan_abismo_desc: "Formless cosmic horrors. They don't fight for territory, but to corrupt reality. They weaken the minds of their opponents.",
 
-                footer_rights: "&copy; 2024 Páramo CCG. All rights reserved.",
+                footer_rights: "&copy; 2026 Páramo CCG. All rights reserved.",
                 footer_contact: "Contact:",
 
-                // RUTAS DE LAS IMÁGENES EN INGLÉS
-                lore_img_src: "img/en/lore.jpg",
-                mid_img_src: "img/en/promo.jpg",
-                clan_img_asfalto_src: "img/en/carta-asfalto.jpg",
-                clan_img_polvora_src: "img/en/carta-polvora.jpg",
-                clan_img_sombra_src: "img/en/carta-sombra.jpg",
-                clan_img_horda_src: "img/en/carta-horda.jpg",
-                clan_img_abismo_src: "img/en/carta-abismo.jpg"
+                // RUTAS DE LAS IMÁGENES EN INGLÉS (Basado en tu carpeta img/ principal)
+                lore_img_src: "img/boss.png",
+                mid_img_src: "img/5.png",
+                clan_img_asfalto_src: "img/asphalt.png",
+                clan_img_polvora_src: "img/gunpowder.png",
+                clan_img_sombra_src: "img/shadow.png",
+                clan_img_horda_src: "img/6.png", 
+                clan_img_abismo_src: "img/abyss.png"
             }
         };
 
@@ -520,10 +520,10 @@
                 }
             });
 
-            // 4. Fondo de la cabecera (Hero)
+            // 4. Fondo de la cabecera (Hero) - Usamos Paramo.jpg para ambos idiomas para no romperlo
             const heroBg = document.getElementById('hero-bg');
-            const heroBgSrc = lang === 'es' ? 'img/es/fondo-hero.jpg' : 'img/en/fondo-hero.jpg';
-            heroBg.style.background = `linear-gradient(to bottom, rgba(9,9,9,0.8), rgba(9,9,9,1)), url('${heroBgSrc}') center/cover`;
+            // Como no tienes img/es/fondo-hero.jpg, apuntamos directamente a la que ya tenías
+            heroBg.style.background = `linear-gradient(to bottom, rgba(9,9,9,0.8), rgba(9,9,9,1)), url('img/Paramo.jpg') center/cover`;
 
             // 5. Guardar preferencia
             localStorage.setItem('paramo_lang', lang);
@@ -535,5 +535,3 @@
             setLanguage(savedLang);
         });
     </script>
-</body>
-</html>
