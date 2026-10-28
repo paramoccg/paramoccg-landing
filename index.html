@@ -71,7 +71,7 @@
         .hero {
             text-align: center;
             padding: 120px 20px 80px;
-            background: linear-gradient(to bottom, rgba(9,9,9,0.8), rgba(9,9,9,1)), url('img/es/12.jpg') center/cover;
+            background: linear-gradient(to bottom, rgba(9,9,9,0.8), rgba(9,9,9,1)), url('ES/jugar.webp') center/cover;
             border-bottom: 3px solid var(--accent);
         }
         .hero h1 {
@@ -361,7 +361,7 @@
             </div>
             <!-- Añadido loading="lazy" -->
             <div class="img-box">
-                <img data-i18n-src="lore_img_src" src="img/es/11.jpg" alt="Historia de Páramo" loading="lazy">
+                <img data-i18n-src="lore_img_src" src="ES/PREMIUM.webp" alt="Historia de Páramo" loading="lazy">
             </div>
         </div>
     </section>
@@ -403,7 +403,7 @@
     <div class="container" style="padding: 40px 20px;">
         <div class="img-box" style="height: 400px; flex: none;">
             <!-- Añadido loading="lazy" -->
-            <img data-i18n-src="mid_img_src" src="img/es/8.png" alt="Arte promocional" loading="lazy">
+            <img data-i18n-src="mid_img_src" src="ES/PREMIUM.webp" alt="Arte promocional" loading="lazy">
         </div>
     </div>
 
@@ -416,7 +416,7 @@
             
             <div class="clan-card asfalto">
                 <!-- Añadido loading="lazy" -->
-                <img class="clan-image" data-i18n-src="clan_img_asfalto_src" src="img/es/asfalto.png" alt="Asfalto" loading="lazy">
+                <img class="clan-image" data-i18n-src="clan_img_asfalto_src" src="ES/asfalto.webp" alt="Asfalto" loading="lazy">
                 <div class="clan-info">
                     <h3 data-i18n="clan_asfalto_name">Asfalto</h3>
                     <span class="resource" data-i18n="clan_asfalto_res">Gasolina</span>
@@ -425,7 +425,7 @@
             </div>
 
             <div class="clan-card polvora">
-                <img class="clan-image" data-i18n-src="clan_img_polvora_src" src="img/es/polvora.png" alt="Pólvora" loading="lazy">
+                <img class="clan-image" data-i18n-src="clan_img_polvora_src" src="ES/polvora.webp" alt="Pólvora" loading="lazy">
                 <div class="clan-info">
                     <h3 data-i18n="clan_polvora_name">Pólvora</h3>
                     <span class="resource" data-i18n="clan_polvora_res">Metal</span>
@@ -434,7 +434,7 @@
             </div>
 
             <div class="clan-card sombra">
-                <img class="clan-image" data-i18n-src="clan_img_sombra_src" src="img/es/sombra.png" alt="Sombra" loading="lazy">
+                <img class="clan-image" data-i18n-src="clan_img_sombra_src" src="ES/sombra.webp" alt="Sombra" loading="lazy">
                 <div class="clan-info">
                     <h3 data-i18n="clan_sombra_name">Sombra</h3>
                     <span class="resource" data-i18n="clan_sombra_res">Estramonio</span>
@@ -443,7 +443,7 @@
             </div>
 
             <div class="clan-card horda">
-                <img class="clan-image" data-i18n-src="clan_img_horda_src" src="img/es/6.png" alt="Horda" loading="lazy">
+                <img class="clan-image" data-i18n-src="clan_img_horda_src" src="ES/horda.webp" alt="Horda" loading="lazy">
                 <div class="clan-info">
                     <h3 data-i18n="clan_horda_name">Horda</h3>
                     <span class="resource" data-i18n="clan_horda_res">Sangre</span>
@@ -452,7 +452,7 @@
             </div>
 
             <div class="clan-card abismo">
-                <img class="clan-image" data-i18n-src="clan_img_abismo_src" src="img/es/abismo.png" alt="Abismo" loading="lazy">
+                <img class="clan-image" data-i18n-src="clan_img_abismo_src" src="ES/abismo.webp" alt="Abismo" loading="lazy">
                 <div class="clan-info">
                     <h3 data-i18n="clan_abismo_name">Abismo</h3>
                     <span class="resource" data-i18n="clan_abismo_res">Éter</span>
@@ -546,13 +546,13 @@
                 footer_rights: "&copy; 2026 Páramo CCG. All rights reserved.",
                 footer_contact: "Contact:",
 
-                lore_img_src: "img/en/10.png",
-                mid_img_src: "img/en/9.jpg",
-                clan_img_asfalto_src: "img/en/asphalt.png",
-                clan_img_polvora_src: "img/en/gunpowder.png",
-                clan_img_sombra_src: "img/en/shadow.png",
-                clan_img_horda_src: "img/en/6.png", 
-                clan_img_abismo_src: "img/en/abyss.png"
+                lore_img_src: "EN/PREMIUM.webp",
+                mid_img_src: "EN/play.webp",
+                clan_img_asfalto_src: "EN/asphalt.webp",
+                clan_img_polvora_src: "EN/gunpowder.webp",
+                clan_img_sombra_src: "EN/shadow.webp",
+                clan_img_horda_src: "EN/horde.webp", 
+                clan_img_abismo_src: "EN/abyss.webp"
             }
         };
 
@@ -578,7 +578,7 @@
             });
 
             const heroBg = document.getElementById('hero-bg');
-            const heroBgSrc = lang === 'es' ? 'img/es/10.jpg' : 'img/en/12.png'; 
+            const heroBgSrc = lang === 'es' ? 'ES/paramo.webp' : 'ES/paramo.webp'; 
             heroBg.style.background = `linear-gradient(to bottom, rgba(9,9,9,0.8), rgba(9,9,9,1)), url('${heroBgSrc}') center/cover`;
 
             localStorage.setItem('paramo_lang', lang);
