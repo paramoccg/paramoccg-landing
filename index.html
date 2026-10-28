@@ -3,32 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paramoccg - Juego</title>
+    <title>Páramo CCG - El Juego de Cartas del Yermo</title>
+    <!-- Fuente de Google para un toque más agresivo -->
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        body { font-family: sans-serif; background: #1a1a1a; color: #fff; text-align: center; padding: 50px; }
-        h1 { font-size: 3rem; margin-bottom: 10px; }
-        p { color: #ccc; max-width: 600px; margin: 0 auto 30px; line-height: 1.6; }
-        .botones { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
-        .btn { padding: 15px 30px; background: #007bff; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; }
-        .btn:hover { background: #0056b3; }
-        .caracteristicas { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-        .card { background: #2a2a2a; padding: 20px; border-radius: 10px; width: 250px; }
+        /* VARIABLES DE COLOR (Basadas en los clanes) */
+        :root {
+            --bg-dark: #0d0d0d;
+            --bg-card: #1c1c1c;
+            --text-main: #e0e0e0;
+            --text-muted: #999;
+            --accent: #ff4d00; /* Naranja fuego/explosión */
+            
+            /* Colores de los Clanes */
+            --asfalto: #b0b0b0; /* Gris plata */
+            --polvora: #ff8c00; /* Naranja metal */
+            --sombra: #8a2be2; /* Morado estramonio */
+            --horda: #d32f2f; /* Rojo sangre */
+            --abismo: #00bfff; /* Azul éter */
+        }
+
+        /* ESTILOS GENERALES */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            background-image: radial-gradient(circle at 50% 0%, #2a1a10 0%, #0d0d0d 70%); /* Efecto de resplandor */
+        }
+        h1, h2, h3 { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+        /* HERO SECTION (Cabecera principal) */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(rgba(13, 13, 13, 0.8), rgba(13, 13, 13, 0.9)), url('ruta-a-tu-imagen-de-fondo.jpg') center/cover;
+            border-bottom: 2px solid var(--accent);
+        }
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 77, 0, 0.6), 0 0 40px rgba(255, 77, 0, 0.3);
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-main);
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            font-weight: 300;
+        }
+
+        /* BOTONES DE TIENDAS */
+        .store-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #fff;
+            background: transparent;
+            border: 2px solid var(--accent);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn:hover {
+            background: var(--accent);
+            box-shadow: 0 0 15px var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* SECCIÓN DE CARACTERÍSTICAS */
+        .features {
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .features h2 { font-size: 2.5rem; margin-bottom: 50px; color: #fff; }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .feature-item {
+            background: var(--bg-card);
+            padding: 30px 20px;
+            border-radius: 8px;
+            border-top: 3px solid var(--accent);
+            transition: transform 0.3s ease;
+        }
+        .feature-item:hover { transform: translateY(-5px); }
+        .feature-item h3 { color: var(--accent); font-size: 1.5rem; margin-bottom: 10px; }
+
+        /* SECCIÓN DEL LORE */
+        .lore {
+            background-color: var(--bg-card);
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .lore h2 { font-size: 2.5rem; color: #fff; margin-bottom: 30px; }
+        .lore p {
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+        .lore .highlight { color: #fff; font-weight: 700; }
+
+        /* SECCIÓN DE CLANES */
+        .clans {
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .clans h2 { font-size: 2.5rem; color: #fff; margin-bottom: 50px; }
+        .clans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .clan-card {
+            background: var(--bg-card);
+            border-radius: 8px;
+            padding: 30px 20px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+        .clan-card:hover { transform: scale(1.05); }
+        
+        /* Colores específicos por clan */
+        .clan-asfalto { border-bottom: 4px solid var(--asfalto); }
+        .clan-asfalto h3 { color: var(--asfalto); }
+        
+        .clan-polvora { border-bottom: 4px solid var(--polvora); }
+        .clan-polvora h3 { color: var(--polvora); }
+        
+        .clan-sombra { border-bottom: 4px solid var(--sombra); }
+        .clan-sombra h3 { color: var(--sombra); }
+        
+        .clan-horda { border-bottom: 4px solid var(--horda); }
+        .clan-horda h3 { color: var(--horda); }
+        
+        .clan-abismo { border-bottom: 4px solid var(--abismo); }
+        .clan-abismo h3 { color: var(--abismo); }
+
+        .clan-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .clan-card .recurso { font-size: 0.9rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 15px; display: block;}
+        .clan-card p { font-size: 0.95rem; color: #bbb; }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #050505;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #222;
+        }
     </style>
 </head>
 <body>
-    <h1>Nombre de tu Juego</h1>
-    <p>Una breve descripción épica de tu juego. ¡Pronto disponible en todas las plataformas!</p>
 
-    <div class="botones">
-        <a href="ENLACE_STEAM" class="btn">Steam</a>
-        <a href="ENLACE_APPSTORE" class="btn">App Store</a>
-        <a href="ENLACE_PLAYSTORE" class="btn">Google Play</a>
-    </div>
+    <!-- CABECERA PRINCIPAL -->
+    <header class="hero">
+        <div class="container">
+            <h1>Páramo CCG</h1>
+            <p>El mundo de Vergel cayó. La Brecha se abrió. Cinco facciones luchan por la supervivencia en el erial. ¿Liderarás a tu clan hacia la gloria o serás devorado por el yermo?</p>
+            
+            <!-- ENLACES A LAS TIENDAS (Modifica los href con tus URLs reales) -->
+            <div class="store-buttons">
+                <a href="#" class="btn">Steam</a> <!-- Reemplaza # con tu enlace de Steam -->
+                <a href="#" class="btn">App Store</a> <!-- Reemplaza # con tu enlace de App Store -->
+                <a href="#" class="btn">Google Play</a> <!-- Reemplaza # con tu enlace de Play Store -->
+            </div>
+        </div>
+    </header>
 
-    <div class="caracteristicas">
-        <div class="card"><h3>Gráficos</h3><p>Impresionantes visuales.</p></div>
-        <div class="card"><h3>Jugabilidad</h3><p>Adictiva y desafiante.</p></div>
-        <div class="card"><h3>Multijugador</h3><p>Juega con amigos.</p></div>
-    </div>
+    <!-- CARACTERÍSTICAS PRINCIPALES -->
+    <section class="features">
+        <div class="container">
+            <h2>Características del Juego</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h3>5 Clanes</h3>
+                    <p>Elige entre Asfalto, Pólvora, Sombra, Horda y Abismo. Cada uno con su propia identidad, recursos únicos y estilo de combate.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>1 Jefe</h3>
+                    <p>Construye tu mazo de 50 cartas y lidera a tus tropas con un comandante de habilidades únicas.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Enclaves</h3>
+                    <p>Descubre los refugios y ruinas del viejo mundo. Toma el control de los recursos del erial para asegurar tu victoria.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Fácil de Aprender</h3>
+                    <p>Reglas intuitivas y una gestión de recursos fluida. Salta a la acción en minutos sin manuales interminables.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Difícil de Dominar</h3>
+                    <p>La estrategia táctica y la previsión son clave. Solo los verdaderos comandantes del páramo sobreviven a los niveles más altos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HISTORIA Y LORE -->
+    <section class="lore">
+        <div class="container">
+            <h2>La Caída de Vergel</h2>
+            <p>El mundo de Vergel era un lugar pacífico. Pero un día, el cielo se rompió. <span class="highlight">La Brecha</span> se abrió, liberando monstruos de pesadilla.</p>
+            <p>En un intento desesperado por detener el caos, los líderes mundiales desataron una guerra nuclear global. El fuego lo devoró todo. Las aguas se secaron. El fértil Vergel quedó reducido a un erial infernal de chatarra, radiación y sangre.</p>
+            <p>Hoy, la supervivencia depende de la ley del más fuerte. Bienvenido a <span class="highlight">Páramo</span>.</p>
+        </div>
+    </section>
+
+    <!-- LOS CLANES -->
+    <section class="clans">
+        <div class="container">
+            <h2>Los 5 Clanes</h2>
+            <div class="clans-grid">
+                <!-- Clan Asfalto -->
+                <div class="clan-card clan-asfalto">
+                    <h3>Asfalto</h3>
+                    <span class="recurso">Recurso: Gasolina</span>
+                    <p>Nómadas humanos obsesionados con la velocidad. Arrollan a sus enemigos con vehículos modificados y asaltos relámpago.</p>
+                </div>
+                <!-- Clan Pólvora -->
+                <div class="clan-card clan-polvora">
+                    <h3>Pólvora</h3>
+                    <span class="recurso">Recurso: Metal</span>
+                    <p>Ingenieros tácticos refugiados en búnkeres. Prefieren la defensa, la artillería pesada y el desgaste a larga distancia.</p>
+                </div>
+                <!-- Clan Sombra -->
+                <div class="clan-card clan-sombra">
+                    <h3>Sombra</h3>
+                    <span class="recurso">Recurso: Estramonio</span>
+                    <p>Humanos místicos que canalizan la energía de La Brecha. Invocan horrores interdimensionales para hacer su voluntad.</p>
+                </div>
+                <!-- Clan Horda -->
+                <div class="clan-card clan-horda">
+                    <h3>Horda</h3>
+                    <span class="recurso">Recurso: Sangre</span>
+                    <p>Invasores de La Brecha. Orcos, trasgos y bestias que confían en la fuerza bruta, los números y la chatarra para aplastar.</p>
+                </div>
+                <!-- Clan Abismo -->
+                <div class="clan-card clan-abismo">
+                    <h3>Abismo</h3>
+                    <span class="recurso">Recurso: Éter</span>
+                    <p>Horrores cósmicos incomprensibles. No luchan por territorio, sino por corromper la realidad misma y quebrar la cordura.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p>&copy; 2024 Páramo CCG. Todos los derechos reservados.</p>
+        <p>Contacto: <a href="mailto:contact@paramoccg.com" style="color: var(--accent); text-decoration: none;">contact@paramoccg.com</a></p>
+    </footer>
+
 </body>
 </html>
