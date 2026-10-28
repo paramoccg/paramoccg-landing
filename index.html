@@ -12,9 +12,8 @@
             --bg-card: #151515;
             --text-main: #d1d1d1;
             --text-muted: #888;
-            --accent: #ff4d00; /* Naranja peligro */
+            --accent: #ff4d00; 
             
-            /* Colores de los Clanes */
             --asfalto: #9fa8b0; 
             --polvora: #ff7b00; 
             --sombra: #8a2be2; 
@@ -29,15 +28,50 @@
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
         }
         h1, h2, h3 { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* SELECTOR DE IDIOMA */
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+        .lang-switch button {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #555;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: bold;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        .lang-switch button:hover {
+            background: rgba(255, 77, 0, 0.3);
+            border-color: var(--accent);
+        }
+        .lang-switch button.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(255, 77, 0, 0.5);
+        }
 
         /* HERO SECTION */
         .hero {
             text-align: center;
             padding: 120px 20px 80px;
-            background: linear-gradient(to bottom, rgba(9,9,9,0.7), rgba(9,9,9,1)), url('ruta-a-tu-imagen-de-fondo-principal.jpg') center/cover;
+            background: linear-gradient(to bottom, rgba(9,9,9,0.8), rgba(9,9,9,1)), url('img/es/fondo-hero.jpg') center/cover;
             border-bottom: 3px solid var(--accent);
         }
         .hero h1 {
@@ -62,7 +96,7 @@
             font-weight: 300;
         }
 
-        /* BOTONES DE TIENDAS */
+        /* BOTONES DE TIENDAS CON ICONOS */
         .store-buttons {
             display: flex;
             gap: 15px;
@@ -70,7 +104,10 @@
             flex-wrap: wrap;
         }
         .btn {
-            padding: 15px 35px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
             font-size: 1.1rem;
             font-family: 'Rajdhani', sans-serif;
             font-weight: 700;
@@ -82,13 +119,14 @@
             border-radius: 4px;
             transition: all 0.3s ease;
         }
+        .btn svg { width: 24px; height: 24px; fill: currentColor; }
         .btn:hover {
             background: var(--accent);
             box-shadow: 0 0 20px var(--accent);
             transform: translateY(-3px);
         }
 
-        /* BARRA DE CARACTERÍSTICAS (UNA SOLA LÍNEA) */
+        /* BARRA DE CARACTERÍSTICAS */
         .features-bar {
             background-color: var(--bg-card);
             border-bottom: 1px solid #333;
@@ -99,7 +137,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap; /* En móviles bajará, en PC estará en una línea */
+            flex-wrap: wrap;
             gap: 20px;
         }
         .feature-item {
@@ -109,17 +147,8 @@
             min-width: 150px;
         }
         .feature-item:last-child { border-right: none; }
-        .feature-item h3 {
-            color: #fff;
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-        }
-        .feature-item p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        .feature-item h3 { color: #fff; font-size: 1.3rem; margin-bottom: 5px; }
+        .feature-item p { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
 
         /* SECCIONES GENERALES */
         section { padding: 80px 0; }
@@ -132,51 +161,29 @@
         }
 
         /* LORE SECTION */
-        .lore-split {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
+        .lore-split { display: flex; align-items: center; gap: 40px; }
         .lore-text { flex: 1; }
-        .lore-text p {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            color: var(--text-muted);
-        }
+        .lore-text p { font-size: 1.1rem; margin-bottom: 20px; color: var(--text-muted); }
         .lore-text .highlight { color: var(--accent); font-weight: bold; }
         
-        /* PLACEHOLDER DE IMAGEN */
-        .img-placeholder {
-            flex: 1;
-            width: 100%;
-            height: 350px;
-            background-color: #1a1a1a;
-            border: 2px dashed #444;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #555;
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 1.2rem;
-            border-radius: 8px;
-            text-align: center;
-            padding: 20px;
+        .img-box {
+            flex: 1; width: 100%; height: 350px;
+            background-color: #1a1a1a; border: 2px solid #333;
+            border-radius: 8px; overflow: hidden;
+            display: flex; justify-content: center; align-items: center;
         }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; }
 
         /* MECÁNICAS SECTION */
-        .mechanics {
-            background-color: var(--bg-card);
-        }
+        .mechanics { background-color: var(--bg-card); }
         .mechanics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
         .mech-card {
-            background: #0d0d0d;
-            padding: 30px;
-            border-radius: 8px;
-            border-left: 4px solid var(--accent);
+            background: #0d0d0d; padding: 30px;
+            border-radius: 8px; border-left: 4px solid var(--accent);
         }
         .mech-card h3 { color: var(--accent); font-size: 1.4rem; margin-bottom: 10px; }
         .mech-card p { font-size: 0.95rem; color: var(--text-muted); }
@@ -188,36 +195,21 @@
             gap: 20px;
         }
         .clan-card {
-            background: var(--bg-card);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
+            background: var(--bg-card); border-radius: 8px;
+            overflow: hidden; transition: transform 0.3s ease;
             border-top: 5px solid #333;
         }
         .clan-card:hover { transform: translateY(-10px); }
-        .clan-img-placeholder {
-            width: 100%;
-            height: 180px;
-            background: #222;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #555;
-            font-size: 0.9rem;
-            border-bottom: 1px solid #333;
+        .clan-image {
+            width: 100%; height: 180px; background: #222;
+            object-fit: cover; border-bottom: 1px solid #333;
         }
         .clan-info { padding: 20px; }
         .clan-info h3 { font-size: 1.6rem; margin-bottom: 5px; }
         .clan-info .resource {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #fff;
-            background: rgba(255,255,255,0.1);
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-bottom: 15px;
+            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;
+            color: #fff; background: rgba(255,255,255,0.1);
+            display: inline-block; padding: 2px 8px; border-radius: 4px; margin-bottom: 15px;
         }
         .clan-info p { font-size: 0.9rem; color: var(--text-muted); }
 
@@ -235,11 +227,8 @@
 
         /* FOOTER */
         footer {
-            text-align: center;
-            padding: 40px 20px;
-            background-color: #050505;
-            border-top: 1px solid #222;
-            color: var(--text-muted);
+            text-align: center; padding: 40px 20px;
+            background-color: #050505; border-top: 1px solid #222; color: var(--text-muted);
         }
         footer a { color: var(--accent); text-decoration: none; }
 
@@ -249,65 +238,83 @@
             .lore-split { flex-direction: column; }
             .feature-item { border-right: none; border-bottom: 1px solid #333; padding-bottom: 10px; }
             .feature-item:last-child { border-bottom: none; }
+            .lang-switch { top: 10px; right: 10px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- SELECTOR DE IDIOMA -->
+    <div class="lang-switch">
+        <button id="btn-es" onclick="setLanguage('es')" class="active">🇪🇸 ES</button>
+        <button id="btn-en" onclick="setLanguage('en')">🇬🇧 EN</button>
+    </div>
+
     <!-- CABECERA PRINCIPAL -->
-    <header class="hero">
+    <header class="hero" id="hero-bg">
         <div class="container">
-            <h2>El Juego de Cartas Coleccionables</h2>
+            <h2 data-i18n="hero_subtitle">El Juego de Cartas Coleccionables</h2>
             <h1>Páramo CCG</h1>
-            <p>El mundo de Vergel cayó. La Brecha se abrió. Cinco facciones luchan por el control de un erial devastado por la radiación y la magia. ¿Liderarás a tu clan hacia la gloria o serás devorado por el yermo?</p>
+            <p data-i18n="hero_desc">El mundo de Vergel cayó...</p>
             
             <div class="store-buttons">
-                <!-- Reemplaza los # con los enlaces reales a tus tiendas -->
-                <a href="#" class="btn">Steam</a>
-                <a href="#" class="btn">App Store</a>
-                <a href="#" class="btn">Google Play</a>
+                <!-- ICONO STEAM -->
+                <a href="#" class="btn">
+                    <svg viewBox="0 0 24 24"><path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 12-5.373 12-12S18.606 0 11.979 0z"/></svg>
+                    Steam
+                </a>
+                <!-- ICONO APP STORE -->
+                <a href="#" class="btn">
+                    <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    App Store
+                </a>
+                <!-- ICONO GOOGLE PLAY -->
+                <a href="#" class="btn">
+                    <svg viewBox="0 0 24 24"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+                    Google Play
+                </a>
             </div>
         </div>
     </header>
 
-    <!-- CARACTERÍSTICAS (UNA SOLA LÍNEA) -->
+    <!-- CARACTERÍSTICAS -->
     <section class="features-bar">
         <div class="container features-container">
             <div class="feature-item">
-                <h3>5 Clanes</h3>
-                <p>Identidades únicas</p>
+                <h3 data-i18n="feat_clans_title">5 Clanes</h3>
+                <p data-i18n="feat_clans_desc">Identidades únicas</p>
             </div>
             <div class="feature-item">
-                <h3>1 Jefe</h3>
-                <p>Comandantes tácticos</p>
+                <h3 data-i18n="feat_boss_title">1 Jefe</h3>
+                <p data-i18n="feat_boss_desc">Comandantes tácticos</p>
             </div>
             <div class="feature-item">
-                <h3>Enclaves</h3>
-                <p>Control estratégico</p>
+                <h3 data-i18n="feat_enclaves_title">Enclaves</h3>
+                <p data-i18n="feat_enclaves_desc">Control estratégico</p>
             </div>
             <div class="feature-item">
-                <h3>Fácil de Aprender</h3>
-                <p>Mecánicas intuitivas</p>
+                <h3 data-i18n="feat_easy_title">Fácil de Aprender</h3>
+                <p data-i18n="feat_easy_desc">Mecánicas intuitivas</p>
             </div>
             <div class="feature-item">
-                <h3>Difícil de Dominar</h3>
-                <p>Profundidad táctica</p>
+                <h3 data-i18n="feat_hard_title">Difícil de Dominar</h3>
+                <p data-i18n="feat_hard_desc">Profundidad táctica</p>
             </div>
         </div>
     </section>
 
     <!-- HISTORIA (Lore) -->
     <section class="container">
-        <h2 class="section-title">El Fin de Vergel</h2>
+        <h2 class="section-title" data-i18n="lore_title">El Fin de Vergel</h2>
         <div class="lore-split">
             <div class="lore-text">
-                <p>El mundo de <strong>Vergel</strong> era un lugar pacífico, repleto de grandes ciudades. Pero un día, el cielo se rompió. <span class="highlight">La Brecha</span> se abrió y liberó a monstruos de pesadilla interdimensionales.</p>
-                <p>En un intento desesperado por detener la invasión, los líderes mundiales desataron una guerra nuclear global. El fuego lo devoró todo. Las aguas se secaron y Vergel quedó reducido a un erial radiactivo de chatarra y sangre.</p>
-                <p>Hoy, este mundo infernal es conocido como <span class="highlight">Páramo</span>. La supervivencia depende de la ley del más fuerte y de elegir un bando en la guerra eterna por los últimos recursos del planeta.</p>
+                <p data-i18n="lore_p1">El mundo de <strong>Vergel</strong> era un lugar pacífico...</p>
+                <p data-i18n="lore_p2">En un intento desesperado...</p>
+                <p data-i18n="lore_p3">Hoy, este mundo infernal es conocido como <span class="highlight">Páramo</span>...</p>
             </div>
-            <!-- IMAGEN DE LA HISTORIA -->
-            <div class="img-placeholder">
-                [Espacio para imagen: Paisaje post-apocalíptico de Páramo o La Brecha]
+            <!-- IMAGEN LORE (Cambia de idioma) -->
+            <div class="img-box">
+                <img data-i18n-src="lore_img_src" src="img/es/lore.jpg" alt="Historia de Páramo">
             </div>
         </div>
     </section>
@@ -315,82 +322,83 @@
     <!-- MECÁNICAS DEL JUEGO -->
     <section class="mechanics">
         <div class="container">
-            <h2 class="section-title">Mecánicas del Juego</h2>
+            <h2 class="section-title" data-i18n="mech_title">Mecánicas del Juego</h2>
             <div class="mechanics-grid">
                 <div class="mech-card">
-                    <h3>Gestación de Recursos</h3>
-                    <p>Olvídate de las cartas de tierra. Tus recursos (Gasolina, Metal, Estramonio, Sangre o Éter) aumentan automáticamente +1 al inicio de cada turno. ¡La batalla escala rápido!</p>
+                    <h3 data-i18n="mech_1_title">Gestación de Recursos</h3>
+                    <p data-i18n="mech_1_desc">Olvídate de las cartas de tierra...</p>
                 </div>
                 <div class="mech-card">
-                    <h3>Mazo y Jefe</h3>
-                    <p>Construye un mazo de exactamente <strong>50 cartas</strong> y elige a tu Jefe. Comienzas la partida con 20 puntos de vida. El objetivo: reducir los del rival a cero.</p>
+                    <h3 data-i18n="mech_2_title">Mazo y Jefe</h3>
+                    <p data-i18n="mech_2_desc">Construye un mazo de exactamente 50 cartas...</p>
                 </div>
                 <div class="mech-card">
-                    <h3>Sistema de Iniciativa</h3>
-                    <p>Las respuestas rápidas se rigen por la pila (LIFO). Juega acciones, responde a tu rival y engaña a tus oponentes con despliegues y modificadores en tiempo real.</p>
+                    <h3 data-i18n="mech_3_title">Sistema de Iniciativa</h3>
+                    <p data-i18n="mech_3_desc">Las respuestas rápidas se rigen por la pila (LIFO)...</p>
                 </div>
                 <div class="mech-card">
-                    <h3>Tácticas y Mods</h3>
-                    <p>Tripula transportes con tus organismos, acopla mods para potenciar a tus tropas y utiliza el ímpetu, reflejos o camuflaje para tomar ventaja en el campo de batalla.</p>
+                    <h3 data-i18n="mech_4_title">Tácticas y Mods</h3>
+                    <p data-i18n="mech_4_desc">Tripula transportes, acopla mods...</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- IMAGEN CENTRAL (Ancho completo) -->
+    <!-- IMAGEN CENTRAL -->
     <div class="container" style="padding: 40px 20px;">
-        <div class="img-placeholder" style="height: 400px;">
-            [Espacio para imagen ancha: Arte promocional del juego o cartas en mesa]
+        <div class="img-box" style="height: 400px; flex: none;">
+            <img data-i18n-src="mid_img_src" src="img/es/promo.jpg" alt="Arte promocional">
         </div>
     </div>
 
     <!-- LOS CLANES -->
     <section class="container">
-        <h2 class="section-title">Los 5 Clanes</h2>
+        <h2 class="section-title" data-i18n="clans_title">Los 5 Clanes</h2>
         <div class="clans-grid">
             
             <div class="clan-card asfalto">
-                <div class="clan-img-placeholder">[Imagen Asfalto]</div>
+                <!-- IMAGEN CLAN ASFALTO (Cambia de idioma) -->
+                <img class="clan-image" data-i18n-src="clan_img_asfalto_src" src="img/es/carta-asfalto.jpg" alt="Asfalto">
                 <div class="clan-info">
-                    <h3>Asfalto</h3>
-                    <span class="resource">Gasolina</span>
-                    <p>Nómadas humanos obsesionados con la velocidad. Usan vehículos modificados y asaltos relámpago para aplastar a sus enemigos en el desierto.</p>
+                    <h3 data-i18n="clan_asfalto_name">Asfalto</h3>
+                    <span class="resource" data-i18n="clan_asfalto_res">Gasolina</span>
+                    <p data-i18n="clan_asfalto_desc">Nómadas humanos obsesionados con la velocidad...</p>
                 </div>
             </div>
 
             <div class="clan-card polvora">
-                <div class="clan-img-placeholder">[Imagen Pólvora]</div>
+                <img class="clan-image" data-i18n-src="clan_img_polvora_src" src="img/es/carta-polvora.jpg" alt="Pólvora">
                 <div class="clan-info">
-                    <h3>Pólvora</h3>
-                    <span class="resource">Metal</span>
-                    <p>Ingenieros y militares refugiados en búnkeres fortificados. Dominan la artillería pesada, las trampas y el combate defensivo a larga distancia.</p>
+                    <h3 data-i18n="clan_polvora_name">Pólvora</h3>
+                    <span class="resource" data-i18n="clan_polvora_res">Metal</span>
+                    <p data-i18n="clan_polvora_desc">Ingenieros y militares refugiados en búnkeres...</p>
                 </div>
             </div>
 
             <div class="clan-card sombra">
-                <div class="clan-img-placeholder">[Imagen Sombra]</div>
+                <img class="clan-image" data-i18n-src="clan_img_sombra_src" src="img/es/carta-sombra.jpg" alt="Sombra">
                 <div class="clan-info">
-                    <h3>Sombra</h3>
-                    <span class="resource">Estramonio</span>
-                    <p>Humanos místicos que canalizan la magia de La Brecha. Utilizan la brujería y el drenaje para invocar horrores que luchen bajo sus órdenes.</p>
+                    <h3 data-i18n="clan_sombra_name">Sombra</h3>
+                    <span class="resource" data-i18n="clan_sombra_res">Estramonio</span>
+                    <p data-i18n="clan_sombra_desc">Humanos místicos que canalizan la magia...</p>
                 </div>
             </div>
 
             <div class="clan-card horda">
-                <div class="clan-img-placeholder">[Imagen Horda]</div>
+                <img class="clan-image" data-i18n-src="clan_img_horda_src" src="img/es/carta-horda.jpg" alt="Horda">
                 <div class="clan-info">
-                    <h3>Horda</h3>
-                    <span class="resource">Sangre</span>
-                    <p>Invasores de La Brecha (orcos, trasgos, gigantes). Apuestan por la fuerza bruta, el ímpetu y tácticas de saturación usando chatarra.</p>
+                    <h3 data-i18n="clan_horda_name">Horda</h3>
+                    <span class="resource" data-i18n="clan_horda_res">Sangre</span>
+                    <p data-i18n="clan_horda_desc">Invasores de La Brecha...</p>
                 </div>
             </div>
 
             <div class="clan-card abismo">
-                <div class="clan-img-placeholder">[Imagen Abismo]</div>
+                <img class="clan-image" data-i18n-src="clan_img_abismo_src" src="img/es/carta-abismo.jpg" alt="Abismo">
                 <div class="clan-info">
-                    <h3>Abismo</h3>
-                    <span class="resource">Éter</span>
-                    <p>Horrores cósmicos sin forma. No luchan por territorio, sino por corromper la realidad. Debilitan y agotan la mente de sus oponentes.</p>
+                    <h3 data-i18n="clan_abismo_name">Abismo</h3>
+                    <span class="resource" data-i18n="clan_abismo_res">Éter</span>
+                    <p data-i18n="clan_abismo_desc">Horrores cósmicos sin forma...</p>
                 </div>
             </div>
 
@@ -399,9 +407,133 @@
 
     <!-- PIE DE PÁGINA -->
     <footer>
-        <p>&copy; 2024 Páramo CCG. Todos los derechos reservados.</p>
-        <p>Contacto: <a href="mailto:contact@paramoccg.com">contact@paramoccg.com</a></p>
+        <p data-i18n="footer_rights">&copy; 2024 Páramo CCG. Todos los derechos reservados.</p>
+        <p><span data-i18n="footer_contact">Contacto:</span> <a href="mailto:contact@paramoccg.com">contact@paramoccg.com</a></p>
     </footer>
 
+    <!-- SCRIPT DE TRADUCCIONES Y CAMBIO DE IMÁGENES -->
+    <script>
+        const translations = {
+            es: {
+                hero_subtitle: "El Juego de Cartas Coleccionables",
+                hero_desc: "El mundo de Vergel cayó. La Brecha se abrió. Cinco facciones luchan por el control de un erial devastado por la radiación y la magia. ¿Liderarás a tu clan hacia la gloria o serás devorado por el yermo?",
+                
+                feat_clans_title: "5 Clanes", feat_clans_desc: "Identidades únicas",
+                feat_boss_title: "1 Jefe", feat_boss_desc: "Comandantes tácticos",
+                feat_enclaves_title: "Enclaves", feat_enclaves_desc: "Control estratégico",
+                feat_easy_title: "Fácil de Aprender", feat_easy_desc: "Mecánicas intuitivas",
+                feat_hard_title: "Difícil de Dominar", feat_hard_desc: "Profundidad táctica",
+
+                lore_title: "El Fin de Vergel",
+                lore_p1: 'El mundo de <strong>Vergel</strong> era un lugar pacífico, repleto de grandes ciudades. Pero un día, el cielo se rompió. <span class="highlight">La Brecha</span> se abrió y liberó a monstruos de pesadilla interdimensionales.',
+                lore_p2: 'En un intento desesperado por detener la invasión, los líderes mundiales desataron una guerra nuclear global. El fuego lo devoró todo. Las aguas se secaron y Vergel quedó reducido a un erial radiactivo de chatarra y sangre.',
+                lore_p3: 'Hoy, este mundo infernal es conocido como <span class="highlight">Páramo</span>. La supervivencia depende de la ley del más fuerte y de elegir un bando en la guerra eterna por los últimos recursos.',
+                
+                mech_title: "Mecánicas del Juego",
+                mech_1_title: "Gestación de Recursos", mech_1_desc: "Olvídate de las cartas de tierra. Tus recursos aumentan automáticamente +1 al inicio de cada turno. ¡La batalla escala rápido!",
+                mech_2_title: "Mazo y Jefe", mech_2_desc: "Construye un mazo de exactamente 50 cartas y elige a tu Jefe. Comienzas con 20 puntos de vida. El objetivo: reducir los del rival a cero.",
+                mech_3_title: "Sistema de Iniciativa", mech_3_desc: "Las respuestas rápidas se rigen por la pila (LIFO). Juega acciones, responde a tu rival y engaña a tus oponentes en tiempo real.",
+                mech_4_title: "Tácticas y Mods", mech_4_desc: "Tripula transportes, acopla mods para potenciar a tus tropas y utiliza el ímpetu, reflejos o camuflaje para tomar ventaja.",
+                
+                clans_title: "Los 5 Clanes",
+                clan_asfalto_name: "Asfalto", clan_asfalto_res: "Gasolina", clan_asfalto_desc: "Nómadas humanos obsesionados con la velocidad. Usan vehículos modificados y asaltos relámpago para aplastar a sus enemigos.",
+                clan_polvora_name: "Pólvora", clan_polvora_res: "Metal", clan_polvora_desc: "Ingenieros y militares refugiados en búnkeres. Dominan la artillería pesada, las trampas y el combate defensivo a distancia.",
+                clan_sombra_name: "Sombra", clan_sombra_res: "Estramonio", clan_sombra_desc: "Humanos místicos que canalizan la magia de La Brecha. Utilizan la brujería para invocar horrores que luchen bajo sus órdenes.",
+                clan_horda_name: "Horda", clan_horda_res: "Sangre", clan_horda_desc: "Invasores de La Brecha. Apuestan por la fuerza bruta, el ímpetu y tácticas de saturación usando chatarra y bestias.",
+                clan_abismo_name: "Abismo", clan_abismo_res: "Éter", clan_abismo_desc: "Horrores cósmicos sin forma. No luchan por territorio, sino por corromper la realidad. Debilitan la mente de sus oponentes.",
+
+                footer_rights: "&copy; 2024 Páramo CCG. Todos los derechos reservados.",
+                footer_contact: "Contacto:",
+
+                // RUTAS DE LAS IMÁGENES EN ESPAÑOL
+                lore_img_src: "img/es/lore.jpg",
+                mid_img_src: "img/es/promo.jpg",
+                clan_img_asfalto_src: "img/es/carta-asfalto.jpg",
+                clan_img_polvora_src: "img/es/carta-polvora.jpg",
+                clan_img_sombra_src: "img/es/carta-sombra.jpg",
+                clan_img_horda_src: "img/es/carta-horda.jpg",
+                clan_img_abismo_src: "img/es/carta-abismo.jpg"
+            },
+            en: {
+                hero_subtitle: "The Collectible Card Game",
+                hero_desc: "The world of Vergel fell. The Rift opened. Five factions fight for control of a wasteland devastated by radiation and magic. Will you lead your clan to glory or be devoured by the wasteland?",
+                
+                feat_clans_title: "5 Clans", feat_clans_desc: "Unique identities",
+                feat_boss_title: "1 Boss", feat_boss_desc: "Tactical commanders",
+                feat_enclaves_title: "Enclaves", feat_enclaves_desc: "Strategic control",
+                feat_easy_title: "Easy to Learn", feat_easy_desc: "Intuitive mechanics",
+                feat_hard_title: "Hard to Master", feat_hard_desc: "Tactical depth",
+
+                lore_title: "The End of Vergel",
+                lore_p1: 'The world of <strong>Vergel</strong> was a peaceful place, full of great cities. But one day, the sky broke. <span class="highlight">The Rift</span> opened and released interdimensional nightmare monsters.',
+                lore_p2: 'In a desperate attempt to stop the invasion, world leaders unleashed a global nuclear war. Fire devoured everything. The waters dried up and Vergel was reduced to a radioactive wasteland of scrap and blood.',
+                lore_p3: 'Today, this hellish world is known as <span class="highlight">Páramo</span>. Survival depends on the law of the strongest and choosing a side in the eternal war for the last resources.',
+
+                mech_title: "Game Mechanics",
+                mech_1_title: "Resource Generation", mech_1_desc: "Forget land cards. Your resources automatically increase +1 at the start of each turn. The battle escalates quickly!",
+                mech_2_title: "Deck and Boss", mech_2_desc: "Build a deck of exactly 50 cards and choose your Boss. You start with 20 life points. The goal: reduce your opponent's to zero.",
+                mech_3_title: "Initiative System", mech_3_desc: "Fast responses are governed by the stack (LIFO). Play actions, respond to your rival, and trick your opponents in real time.",
+                mech_4_title: "Tactics and Mods", mech_4_desc: "Crew transports, attach mods to buff your troops, and use haste, reflexes, or camouflage to gain an advantage.",
+                
+                clans_title: "The 5 Clans",
+                clan_asfalto_name: "Asphalt", clan_asfalto_res: "Gasoline", clan_asfalto_desc: "Human nomads obsessed with speed. They use modified vehicles and lightning raids to crush their enemies.",
+                clan_polvora_name: "Gunpowder", clan_polvora_res: "Metal", clan_polvora_desc: "Engineers and soldiers taking refuge in bunkers. They master heavy artillery, traps, and defensive ranged combat.",
+                clan_sombra_name: "Shadow", clan_sombra_res: "Datura", clan_sombra_desc: "Mystical humans who channel the magic of The Rift. They use witchcraft to summon horrors to fight under their command.",
+                clan_horda_name: "Horde", clan_horda_res: "Blood", clan_horda_desc: "Invaders from The Rift. They rely on brute force, haste, and saturation tactics using scrap and beasts.",
+                clan_abismo_name: "Abyss", clan_abismo_res: "Aether", clan_abismo_desc: "Formless cosmic horrors. They don't fight for territory, but to corrupt reality. They weaken the minds of their opponents.",
+
+                footer_rights: "&copy; 2024 Páramo CCG. All rights reserved.",
+                footer_contact: "Contact:",
+
+                // RUTAS DE LAS IMÁGENES EN INGLÉS
+                lore_img_src: "img/en/lore.jpg",
+                mid_img_src: "img/en/promo.jpg",
+                clan_img_asfalto_src: "img/en/carta-asfalto.jpg",
+                clan_img_polvora_src: "img/en/carta-polvora.jpg",
+                clan_img_sombra_src: "img/en/carta-sombra.jpg",
+                clan_img_horda_src: "img/en/carta-horda.jpg",
+                clan_img_abismo_src: "img/en/carta-abismo.jpg"
+            }
+        };
+
+        function setLanguage(lang) {
+            // 1. Actualizar clases de los botones
+            document.getElementById('btn-es').classList.remove('active');
+            document.getElementById('btn-en').classList.remove('active');
+            document.getElementById(`btn-${lang}`).classList.add('active');
+
+            // 2. Traducir todos los TEXTOS (data-i18n)
+            const textElements = document.querySelectorAll('[data-i18n]');
+            textElements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // 3. Cambiar todas las IMÁGENES (data-i18n-src)
+            const imgElements = document.querySelectorAll('[data-i18n-src]');
+            imgElements.forEach(el => {
+                const key = el.getAttribute('data-i18n-src');
+                if (translations[lang][key]) {
+                    el.src = translations[lang][key];
+                }
+            });
+
+            // 4. Fondo de la cabecera (Hero)
+            const heroBg = document.getElementById('hero-bg');
+            const heroBgSrc = lang === 'es' ? 'img/es/fondo-hero.jpg' : 'img/en/fondo-hero.jpg';
+            heroBg.style.background = `linear-gradient(to bottom, rgba(9,9,9,0.8), rgba(9,9,9,1)), url('${heroBgSrc}') center/cover`;
+
+            // 5. Guardar preferencia
+            localStorage.setItem('paramo_lang', lang);
+        }
+
+        // Cargar el idioma guardado al iniciar, o Español por defecto
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('paramo_lang') || 'es';
+            setLanguage(savedLang);
+        });
+    </script>
 </body>
 </html>
