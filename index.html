@@ -71,7 +71,7 @@
         .hero {
             text-align: center;
             padding: 120px 20px 80px;
-            /* Sincronizado con tu archivo jugar.webp */
+            /* Fondo por defecto (Español) */
             background: linear-gradient(to bottom, rgba(9,9,9,0.8), rgba(9,9,9,1)), url('ES/jugar.webp') center/cover;
             border-bottom: 3px solid var(--accent);
         }
@@ -360,7 +360,6 @@
                 <p data-i18n="lore_p2">En un intento desesperado...</p>
                 <p data-i18n="lore_p3">Hoy, este mundo infernal es conocido como <span class="highlight">Páramo</span>...</p>
             </div>
-            <!-- IMAGEN ACTUALIZADA: Apunta a ES/PREMIUM.webp -->
             <div class="img-box">
                 <img data-i18n-src="lore_img_src" src="ES/PREMIUM.webp" alt="Historia de Páramo" loading="lazy">
             </div>
@@ -403,7 +402,6 @@
     <!-- IMAGEN CENTRAL -->
     <div class="container" style="padding: 40px 20px;">
         <div class="img-box" style="height: 400px; flex: none;">
-            <!-- IMAGEN ACTUALIZADA: Apunta a ES/jugar.webp -->
             <img data-i18n-src="mid_img_src" src="ES/jugar.webp" alt="Arte promocional" loading="lazy">
         </div>
     </div>
@@ -416,7 +414,6 @@
         <div class="clans-grid">
             
             <div class="clan-card asfalto">
-                <!-- IMAGEN ACTUALIZADA: Apunta a ES/asfalto.webp -->
                 <img class="clan-image" data-i18n-src="clan_img_asfalto_src" src="ES/asfalto.webp" alt="Asfalto" loading="lazy">
                 <div class="clan-info">
                     <h3 data-i18n="clan_asfalto_name">Asfalto</h3>
@@ -506,7 +503,6 @@
                 footer_rights: "&copy; 2026 Páramo CCG. Todos los derechos reservados.",
                 footer_contact: "Contacto:",
 
-                // RUTAS CORREGIDAS (Carpeta ES y archivos .webp)
                 lore_img_src: "ES/PREMIUM.webp",
                 mid_img_src: "ES/jugar.webp",
                 clan_img_asfalto_src: "ES/asfalto.webp",
@@ -548,8 +544,8 @@
                 footer_rights: "&copy; 2026 Páramo CCG. All rights reserved.",
                 footer_contact: "Contact:",
 
-                // RUTAS CORREGIDAS (Carpeta EN y archivos .webp)
-                lore_img_src: "EN/PREMIUM.webp",
+                // Rutas corregidas: premium en minúsculas y play.webp
+                lore_img_src: "EN/premium.webp",
                 mid_img_src: "EN/play.webp",
                 clan_img_asfalto_src: "EN/asphalt.webp",
                 clan_img_polvora_src: "EN/gunpowder.webp",
@@ -580,9 +576,9 @@
                 }
             });
 
-            // Fondo del Hero corregido
+            // Fondo del Hero corregido: usa play.webp en lugar de paramo.webp para inglés
             const heroBg = document.getElementById('hero-bg');
-            const heroBgSrc = lang === 'es' ? 'ES/paramo.webp' : 'EN/paramo.webp'; 
+            const heroBgSrc = lang === 'es' ? 'ES/jugar.webp' : 'EN/play.webp'; 
             heroBg.style.background = `linear-gradient(to bottom, rgba(9,9,9,0.8), rgba(9,9,9,1)), url('${heroBgSrc}') center/cover`;
 
             localStorage.setItem('paramo_lang', lang);
