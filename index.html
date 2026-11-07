@@ -4,38 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Páramo CCG - El Juego de Cartas del Yermo</title>
-    <!-- Fuente de Google para un toque más agresivo -->
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        /* VARIABLES DE COLOR (Basadas en los clanes) */
         :root {
             --bg-dark: #0d0d0d;
             --bg-card: #1c1c1c;
             --text-main: #e0e0e0;
             --text-muted: #999;
-            --accent: #ff4d00; /* Naranja fuego/explosión */
+            --accent: #ff4d00;
             
-            /* Colores de los Clanes */
-            --asfalto: #b0b0b0; /* Gris plata */
-            --polvora: #ff8c00; /* Naranja metal */
-            --sombra: #8a2be2; /* Morado estramonio */
-            --horda: #d32f2f; /* Rojo sangre */
-            --abismo: #00bfff; /* Azul éter */
+            --asfalto: #b0b0b0;
+            --polvora: #ff8c00;
+            --sombra: #8a2be2;
+            --horda: #d32f2f;
+            --abismo: #00bfff;
         }
 
-        /* ESTILOS GENERALES */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Roboto', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-main);
             line-height: 1.6;
-            background-image: radial-gradient(circle at 50% 0%, #2a1a10 0%, #0d0d0d 70%); /* Efecto de resplandor */
+            background-image: radial-gradient(circle at 50% 0%, #2a1a10 0%, #0d0d0d 70%);
         }
         h1, h2, h3 { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; }
         .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
 
-        /* HERO SECTION (Cabecera principal) */
         .hero {
             text-align: center;
             padding: 100px 20px;
@@ -58,7 +53,6 @@
             font-weight: 300;
         }
 
-        /* BOTONES DE TIENDAS */
         .store-buttons {
             display: flex;
             gap: 20px;
@@ -87,7 +81,7 @@
             transform: translateY(-3px);
         }
         
-        /* BOTONES SECUNDARIOS (Documentación) */
+        /* Estilos para los botones de documentos */
         .btn-docs {
             border-color: #888;
             color: #ddd;
@@ -98,7 +92,6 @@
             color: #111;
         }
 
-        /* SECCIÓN DE CARACTERÍSTICAS */
         .features {
             padding: 80px 20px;
             text-align: center;
@@ -121,7 +114,6 @@
         .feature-item:hover { transform: translateY(-5px); }
         .feature-item h3 { color: var(--accent); font-size: 1.5rem; margin-bottom: 10px; }
 
-        /* SECCIÓN DEL LORE */
         .lore {
             background-color: var(--bg-card);
             padding: 80px 20px;
@@ -136,7 +128,6 @@
         }
         .lore .highlight { color: #fff; font-weight: 700; }
 
-        /* SECCIÓN DE CLANES */
         .clans {
             padding: 80px 20px;
             text-align: center;
@@ -153,11 +144,12 @@
             padding: 30px 20px;
             border: 1px solid #333;
             transition: all 0.3s ease;
-            cursor: pointer; /* Feedback para indicar que se puede tocar */
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
         }
         .clan-card:hover { transform: scale(1.05); }
         
-        /* Solución táctil para ocultar la información y ver la carta en móvil */
+        /* Comportamiento móvil para revelar la carta */
         .clan-card.oculta-panel h3,
         .clan-card.oculta-panel .recurso,
         .clan-card.oculta-panel p {
@@ -166,21 +158,17 @@
         }
         .clan-card.oculta-panel {
             background-color: transparent !important;
+            border-color: transparent !important;
         }
         
-        /* Colores específicos por clan */
         .clan-asfalto { border-bottom: 4px solid var(--asfalto); }
         .clan-asfalto h3 { color: var(--asfalto); }
-        
         .clan-polvora { border-bottom: 4px solid var(--polvora); }
         .clan-polvora h3 { color: var(--polvora); }
-        
         .clan-sombra { border-bottom: 4px solid var(--sombra); }
         .clan-sombra h3 { color: var(--sombra); }
-        
         .clan-horda { border-bottom: 4px solid var(--horda); }
         .clan-horda h3 { color: var(--horda); }
-        
         .clan-abismo { border-bottom: 4px solid var(--abismo); }
         .clan-abismo h3 { color: var(--abismo); }
 
@@ -188,7 +176,6 @@
         .clan-card .recurso { font-size: 0.9rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 15px; display: block; transition: opacity 0.3s; }
         .clan-card p { font-size: 0.95rem; color: #bbb; transition: opacity 0.3s; }
 
-        /* FOOTER */
         footer {
             text-align: center;
             padding: 30px;
@@ -201,19 +188,16 @@
 </head>
 <body>
 
-    <!-- CABECERA PRINCIPAL -->
     <header class="hero">
         <div class="container">
             <h1>Páramo CCG</h1>
             <p>El mundo de Vergel cayó. La Brecha se abrió. Cinco facciones luchan por la supervivencia en el erial. ¿Liderarás a tu clan hacia la gloria o serás devorado por el yermo?</p>
             
-            <!-- ENLACES A LAS TIENDAS -->
             <div class="store-buttons">
                 <a href="#" class="btn">Steam</a> 
                 <a href="#" class="btn">Google Play</a> 
             </div>
             
-            <!-- ENLACES A DOCUMENTACIÓN -->
             <div class="store-buttons" style="margin-top: 20px;">
                 <a id="btn-manual" href="Paramo_CCG_Manual_ES.pdf" class="btn btn-docs">Manual de reglas</a>
                 <a id="btn-guia" href="Paramo_CCG_Guia_Rapida.pdf" class="btn btn-docs">Guía rápida</a>
@@ -222,7 +206,6 @@
         </div>
     </header>
 
-    <!-- CARACTERÍSTICAS PRINCIPALES -->
     <section class="features">
         <div class="container">
             <h2>Características del Juego</h2>
@@ -251,7 +234,6 @@
         </div>
     </section>
 
-    <!-- HISTORIA Y LORE -->
     <section class="lore">
         <div class="container">
             <h2>La Caída de Vergel</h2>
@@ -261,36 +243,30 @@
         </div>
     </section>
 
-    <!-- LOS CLANES -->
     <section class="clans">
         <div class="container">
             <h2>Los 5 Clanes</h2>
             <div class="clans-grid">
-                <!-- Clan Asfalto -->
                 <div class="clan-card clan-asfalto">
                     <h3>Asfalto</h3>
                     <span class="recurso">Recurso: Gasolina</span>
                     <p>Nómadas humanos obsesionados con la velocidad. Arrollan a sus enemigos con vehículos modificados y asaltos relámpago.</p>
                 </div>
-                <!-- Clan Pólvora -->
                 <div class="clan-card clan-polvora">
                     <h3>Pólvora</h3>
                     <span class="recurso">Recurso: Metal</span>
                     <p>Ingenieros tácticos refugiados en búnkeres. Prefieren la defensa, la artillería pesada y el desgaste a larga distancia.</p>
                 </div>
-                <!-- Clan Sombra -->
                 <div class="clan-card clan-sombra">
                     <h3>Sombra</h3>
                     <span class="recurso">Recurso: Estramonio</span>
                     <p>Humanos místicos que canalizan la energía de La Brecha. Invocan horrores interdimensionales para hacer su voluntad.</p>
                 </div>
-                <!-- Clan Horda -->
                 <div class="clan-card clan-horda">
                     <h3>Horda</h3>
                     <span class="recurso">Recurso: Sangre</span>
                     <p>Invasores de La Brecha. Orcos, trasgos y bestias que confían en la fuerza bruta, los números y la chatarra para aplastar.</p>
                 </div>
-                <!-- Clan Abismo -->
                 <div class="clan-card clan-abismo">
                     <h3>Abismo</h3>
                     <span class="recurso">Recurso: Éter</span>
@@ -300,43 +276,50 @@
         </div>
     </section>
 
-    <!-- PIE DE PÁGINA -->
     <footer>
         <p>&copy; 2024 Páramo CCG. Todos los derechos reservados.</p>
         <p>Contacto: <a href="mailto:contact@paramoccg.com" style="color: var(--accent); text-decoration: none;">contact@paramoccg.com</a></p>
     </footer>
 
-    <!-- SCRIPT DE INTERACCIÓN MÓVIL Y GESTIÓN DE IDIOMAS -->
     <script>
-        // 1. Ocultar el texto de las cartas de clan al tocar (Móviles)
+        // 1. Ocultar el texto y el fondo de las cartas al hacer clic (para móviles)
         document.querySelectorAll('.clan-card').forEach(function(card) {
             card.addEventListener('click', function() {
                 this.classList.toggle('oculta-panel');
             });
         });
 
-        // 2. Cambiar automáticamente los enlaces de los PDFs si el usuario está en la versión en inglés
+        // 2. Comprobar el idioma de la web y actualizar los enlaces a los PDF
         function actualizarEnlacesPDF() {
-            // Comprobamos si la web ha sido traducida o si el navegador está en inglés
-            var lang = document.documentElement.lang.toLowerCase() || navigator.language.toLowerCase();
+            var lang = document.documentElement.lang.toLowerCase() || 'es';
             
-            if (lang.includes('en')) {
-                document.getElementById('btn-manual').href = "Paramo_CCG_Rulebook_EN.pdf";
-                document.getElementById('btn-guia').href = "Paramo_CCG_Quick_Guide_EN.pdf";
-                document.getElementById('btn-mitologia').href = "Paramo_CCG_Mythology_EN.pdf";
+            var btnManual = document.getElementById('btn-manual');
+            var btnGuia = document.getElementById('btn-guia');
+            var btnMito = document.getElementById('btn-mitologia');
+
+            if (lang.startsWith('en')) {
+                btnManual.href = "Paramo_CCG_Rulebook_EN.pdf";
+                btnGuia.href = "Paramo_CCG_Quick_Guide_EN.pdf";
+                btnMito.href = "Paramo_CCG_Mythology_EN.pdf";
             } else {
-                document.getElementById('btn-manual').href = "Paramo_CCG_Manual_ES.pdf";
-                document.getElementById('btn-guia').href = "Paramo_CCG_Guia_Rapida.pdf";
-                document.getElementById('btn-mitologia').href = "Paramo_CCG_Mitologia.pdf";
+                btnManual.href = "Paramo_CCG_Manual_ES.pdf";
+                btnGuia.href = "Paramo_CCG_Guia_Rapida.pdf";
+                btnMito.href = "Paramo_CCG_Mitologia.pdf";
             }
         }
         
-        // Ejecutar al cargar la página
+        // Ejecutar script al cargar la página
         document.addEventListener("DOMContentLoaded", actualizarEnlacesPDF);
         
-        // Mantenerse alerta por si un plugin de traducción (como Weglot o Google Translate) cambia el idioma sobre la marcha
-        var observer = new MutationObserver(actualizarEnlacesPDF);
-        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+        // Detectar si el idioma cambia dinámicamente
+        var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.attributeName === "lang") {
+                    actualizarEnlacesPDF();
+                }
+            });
+        });
+        observer.observe(document.documentElement, { attributes: true });
     </script>
 </body>
 </html>
