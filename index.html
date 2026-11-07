@@ -3,279 +3,397 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Páramo CCG - El Juego de Cartas del Yermo</title>
-    <!-- Fuente de Google para un toque más agresivo -->
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <title>Páramo CCG</title>
     <style>
-        /* VARIABLES DE COLOR (Basadas en los clanes) */
+        /* === VARIABLES DE DISEÑO (Comic Noir / Post-apocalíptico) === */
         :root {
-            --bg-dark: #0d0d0d;
-            --bg-card: #1c1c1c;
-            --text-main: #e0e0e0;
-            --text-muted: #999;
-            --accent: #ff4d00; /* Naranja fuego/explosión */
-            
-            /* Colores de los Clanes */
-            --asfalto: #b0b0b0; /* Gris plata */
-            --polvora: #ff8c00; /* Naranja metal */
-            --sombra: #8a2be2; /* Morado estramonio */
-            --horda: #d32f2f; /* Rojo sangre */
-            --abismo: #00bfff; /* Azul éter */
+            --bg-dark: #0a0a0c;
+            --text-light: #e0e0e0;
+            --accent-orange: #ff5500; /* Asfalto / Pólvora vibe */
+            --accent-cyan: #00e5ff;   /* Abismo / Cosmic Horror vibe */
+            --ink-black: #000000;
+            --comic-border: 4px solid var(--ink-black);
+            --font-main: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
 
-        /* ESTILOS GENERALES */
+        /* === ESTILOS GENERALES === */
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
-            font-family: 'Roboto', sans-serif;
             background-color: var(--bg-dark);
-            color: var(--text-main);
+            color: var(--text-light);
+            font-family: var(--font-main);
             line-height: 1.6;
-            background-image: radial-gradient(circle at 50% 0%, #2a1a10 0%, #0d0d0d 70%); /* Efecto de resplandor */
-        }
-        h1, h2, h3 { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
-
-        /* HERO SECTION (Cabecera principal) */
-        .hero {
-            text-align: center;
-            padding: 100px 20px;
-            background: linear-gradient(rgba(13, 13, 13, 0.8), rgba(13, 13, 13, 0.9)), url('ruta-a-tu-imagen-de-fondo.jpg') center/cover;
-            border-bottom: 2px solid var(--accent);
-        }
-        .hero h1 {
-            font-size: 5rem;
-            font-weight: 700;
-            color: #fff;
-            text-shadow: 0 0 20px rgba(255, 77, 0, 0.6), 0 0 40px rgba(255, 77, 0, 0.3);
-            letter-spacing: 4px;
-            margin-bottom: 10px;
-        }
-        .hero p {
-            font-size: 1.3rem;
-            color: var(--text-main);
-            max-width: 700px;
-            margin: 0 auto 40px auto;
-            font-weight: 300;
+            overflow-x: hidden;
         }
 
-        /* BOTONES DE TIENDAS */
-        .store-buttons {
+        /* === NAVEGACIÓN === */
+        nav {
             display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .btn {
-            display: inline-block;
-            padding: 15px 40px;
-            font-size: 1.1rem;
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 700;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: #fff;
-            background: transparent;
-            border: 2px solid var(--accent);
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .btn:hover {
-            background: var(--accent);
-            box-shadow: 0 0 15px var(--accent);
-            transform: translateY(-3px);
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: var(--bg-dark);
+            border-bottom: var(--comic-border);
+            box-shadow: 0 4px 0 var(--accent-orange);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        /* SECCIÓN DE CARACTERÍSTICAS */
-        .features {
-            padding: 80px 20px;
-            text-align: center;
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-orange);
+            text-shadow: 2px 2px 0px var(--ink-black);
         }
-        .features h2 { font-size: 2.5rem; margin-bottom: 50px; color: #fff; }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
+
+        .lang-switch {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--text-light);
+            padding: 0.5rem 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-switch:hover {
+            background: var(--text-light);
+            color: var(--bg-dark);
+        }
+
+        /* === HERO SECTION === */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 5%;
+            max-width: 1200px;
             margin: 0 auto;
         }
-        .feature-item {
-            background: var(--bg-card);
-            padding: 30px 20px;
-            border-radius: 8px;
-            border-top: 3px solid var(--accent);
-            transition: transform 0.3s ease;
-        }
-        .feature-item:hover { transform: translateY(-5px); }
-        .feature-item h3 { color: var(--accent); font-size: 1.5rem; margin-bottom: 10px; }
 
-        /* SECCIÓN DEL LORE */
-        .lore {
-            background-color: var(--bg-card);
-            padding: 80px 20px;
-            text-align: center;
-        }
-        .lore h2 { font-size: 2.5rem; color: #fff; margin-bottom: 30px; }
-        .lore p {
+        .hero-img-container {
+            width: 100%;
             max-width: 800px;
-            margin: 0 auto 20px auto;
-            font-size: 1.1rem;
-            color: var(--text-muted);
+            margin-bottom: 2rem;
+            border: var(--comic-border);
+            box-shadow: 10px 10px 0 var(--accent-cyan);
+            background-color: #1a1a1a; /* Placeholder bg */
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .lore .highlight { color: #fff; font-weight: 700; }
 
-        /* SECCIÓN DE CLANES */
-        .clans {
-            padding: 80px 20px;
+        .hero-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin-bottom: 2.5rem;
+            color: #b3b3b3;
+        }
+
+        /* === BOTONES CTA === */
+        .cta-container {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            text-transform: uppercase;
+            border: var(--comic-border);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-steam {
+            background-color: var(--accent-orange);
+            color: var(--ink-black);
+            box-shadow: 4px 4px 0 var(--text-light);
+        }
+
+        .btn-android {
+            background-color: var(--accent-cyan);
+            color: var(--ink-black);
+            box-shadow: 4px 4px 0 var(--text-light);
+        }
+
+        .btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 var(--text-light);
+        }
+
+        /* === SECCIÓN LORE & RECURSOS === */
+        .content-section {
+            padding: 4rem 5%;
+            background: #111115;
+            border-top: var(--comic-border);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 4rem auto;
+        }
+
+        .feature-card {
+            background: var(--bg-dark);
+            border: var(--comic-border);
+            padding: 2rem;
+            box-shadow: 6px 6px 0 var(--accent-orange);
+        }
+
+        .feature-card h3 {
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .resources {
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
         }
-        .clans h2 { font-size: 2.5rem; color: #fff; margin-bottom: 50px; }
-        .clans-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-        .clan-card {
-            background: var(--bg-card);
-            border-radius: 8px;
-            padding: 30px 20px;
-            border: 1px solid #333;
-            transition: all 0.3s ease;
-        }
-        .clan-card:hover { transform: scale(1.05); }
-        
-        /* Colores específicos por clan */
-        .clan-asfalto { border-bottom: 4px solid var(--asfalto); }
-        .clan-asfalto h3 { color: var(--asfalto); }
-        
-        .clan-polvora { border-bottom: 4px solid var(--polvora); }
-        .clan-polvora h3 { color: var(--polvora); }
-        
-        .clan-sombra { border-bottom: 4px solid var(--sombra); }
-        .clan-sombra h3 { color: var(--sombra); }
-        
-        .clan-horda { border-bottom: 4px solid var(--horda); }
-        .clan-horda h3 { color: var(--horda); }
-        
-        .clan-abismo { border-bottom: 4px solid var(--abismo); }
-        .clan-abismo h3 { color: var(--abismo); }
 
-        .clan-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
-        .clan-card .recurso { font-size: 0.9rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 15px; display: block;}
-        .clan-card p { font-size: 0.95rem; color: #bbb; }
+        .resources h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--accent-orange);
+        }
 
-        /* FOOTER */
+        .pdf-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .pdf-link {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-bottom: 2px solid var(--accent-cyan);
+            padding-bottom: 5px;
+            transition: color 0.3s;
+        }
+
+        .pdf-link:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* === FOOTER === */
         footer {
             text-align: center;
-            padding: 30px;
-            background-color: #050505;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            border-top: 1px solid #222;
+            padding: 2rem;
+            border-top: var(--comic-border);
+            background: var(--bg-dark);
+            margin-top: 2rem;
         }
     </style>
 </head>
 <body>
 
-    <!-- CABECERA PRINCIPAL -->
+    <nav>
+        <div class="logo">Páramo CCG</div>
+        <button class="lang-switch" id="langToggleBtn" onclick="toggleLanguage()">ES / EN</button>
+    </nav>
+
     <header class="hero">
-        <div class="container">
-            <h1>Páramo CCG</h1>
-            <p>El mundo de Vergel cayó. La Brecha se abrió. Cinco facciones luchan por la supervivencia en el erial. ¿Liderarás a tu clan hacia la gloria o serás devorado por el yermo?</p>
-            
-            <!-- ENLACES A LAS TIENDAS (Modifica los href con tus URLs reales) -->
-            <div class="store-buttons">
-                <a href="#" class="btn">Steam</a> <!-- Reemplaza # con tu enlace de Steam -->
-                <a href="#" class="btn">App Store</a> <!-- Reemplaza # con tu enlace de App Store -->
-                <a href="#" class="btn">Google Play</a> <!-- Reemplaza # con tu enlace de Play Store -->
-            </div>
+        <div class="hero-img-container">
+            <!-- Esta imagen cambiará según el idioma -->
+            <img id="mainBannerImg" src="" alt="Páramo CCG Banner">
+        </div>
+        
+        <h1 id="mainTitle">...</h1>
+        <p class="subtitle" id="mainSubtitle">...</p>
+        
+        <div class="cta-container">
+            <a href="#" id="linkSteam" class="btn btn-steam">...</a>
+            <a href="#" id="linkAndroid" class="btn btn-android">...</a>
         </div>
     </header>
 
-    <!-- CARACTERÍSTICAS PRINCIPALES -->
-    <section class="features">
-        <div class="container">
-            <h2>Características del Juego</h2>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <h3>5 Clanes</h3>
-                    <p>Elige entre Asfalto, Pólvora, Sombra, Horda y Abismo. Cada uno con su propia identidad, recursos únicos y estilo de combate.</p>
-                </div>
-                <div class="feature-item">
-                    <h3>1 Jefe</h3>
-                    <p>Construye tu mazo de 50 cartas y lidera a tus tropas con un comandante de habilidades únicas.</p>
-                </div>
-                <div class="feature-item">
-                    <h3>Enclaves</h3>
-                    <p>Descubre los refugios y ruinas del viejo mundo. Toma el control de los recursos del erial para asegurar tu victoria.</p>
-                </div>
-                <div class="feature-item">
-                    <h3>Fácil de Aprender</h3>
-                    <p>Reglas intuitivas y una gestión de recursos fluida. Salta a la acción en minutos sin manuales interminables.</p>
-                </div>
-                <div class="feature-item">
-                    <h3>Difícil de Dominar</h3>
-                    <p>La estrategia táctica y la previsión son clave. Solo los verdaderos comandantes del páramo sobreviven a los niveles más altos.</p>
-                </div>
+    <section class="content-section">
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3 id="feat1Title">...</h3>
+                <p id="feat1Desc">...</p>
+            </div>
+            <div class="feature-card">
+                <h3 id="feat2Title">...</h3>
+                <p id="feat2Desc">...</p>
+            </div>
+            <div class="feature-card">
+                <h3 id="feat3Title">...</h3>
+                <p id="feat3Desc">...</p>
+            </div>
+        </div>
+
+        <div class="resources">
+            <h2 id="resourcesTitle">...</h2>
+            <div class="pdf-links">
+                <a href="#" id="linkPdfManual" class="pdf-link" target="_blank">...</a>
+                <a href="#" id="linkPdfGuide" class="pdf-link" target="_blank">...</a>
+                <a href="#" id="linkPdfLore" class="pdf-link" target="_blank">...</a>
             </div>
         </div>
     </section>
 
-    <!-- HISTORIA Y LORE -->
-    <section class="lore">
-        <div class="container">
-            <h2>La Caída de Vergel</h2>
-            <p>El mundo de Vergel era un lugar pacífico. Pero un día, el cielo se rompió. <span class="highlight">La Brecha</span> se abrió, liberando monstruos de pesadilla.</p>
-            <p>En un intento desesperado por detener el caos, los líderes mundiales desataron una guerra nuclear global. El fuego lo devoró todo. Las aguas se secaron. El fértil Vergel quedó reducido a un erial infernal de chatarra, radiación y sangre.</p>
-            <p>Hoy, la supervivencia depende de la ley del más fuerte. Bienvenido a <span class="highlight">Páramo</span>.</p>
-        </div>
-    </section>
-
-    <!-- LOS CLANES -->
-    <section class="clans">
-        <div class="container">
-            <h2>Los 5 Clanes</h2>
-            <div class="clans-grid">
-                <!-- Clan Asfalto -->
-                <div class="clan-card clan-asfalto">
-                    <h3>Asfalto</h3>
-                    <span class="recurso">Recurso: Gasolina</span>
-                    <p>Nómadas humanos obsesionados con la velocidad. Arrollan a sus enemigos con vehículos modificados y asaltos relámpago.</p>
-                </div>
-                <!-- Clan Pólvora -->
-                <div class="clan-card clan-polvora">
-                    <h3>Pólvora</h3>
-                    <span class="recurso">Recurso: Metal</span>
-                    <p>Ingenieros tácticos refugiados en búnkeres. Prefieren la defensa, la artillería pesada y el desgaste a larga distancia.</p>
-                </div>
-                <!-- Clan Sombra -->
-                <div class="clan-card clan-sombra">
-                    <h3>Sombra</h3>
-                    <span class="recurso">Recurso: Estramonio</span>
-                    <p>Humanos místicos que canalizan la energía de La Brecha. Invocan horrores interdimensionales para hacer su voluntad.</p>
-                </div>
-                <!-- Clan Horda -->
-                <div class="clan-card clan-horda">
-                    <h3>Horda</h3>
-                    <span class="recurso">Recurso: Sangre</span>
-                    <p>Invasores de La Brecha. Orcos, trasgos y bestias que confían en la fuerza bruta, los números y la chatarra para aplastar.</p>
-                </div>
-                <!-- Clan Abismo -->
-                <div class="clan-card clan-abismo">
-                    <h3>Abismo</h3>
-                    <span class="recurso">Recurso: Éter</span>
-                    <p>Horrores cósmicos incomprensibles. No luchan por territorio, sino por corromper la realidad misma y quebrar la cordura.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PIE DE PÁGINA -->
     <footer>
-        <p>&copy; 2024 Páramo CCG. Todos los derechos reservados.</p>
-        <p>Contacto: <a href="mailto:contact@paramoccg.com" style="color: var(--accent); text-decoration: none;">contact@paramoccg.com</a></p>
+        <p id="footerText">...</p>
     </footer>
 
+    <!-- ========================================== -->
+    <!-- SCRIPT PARA GESTIONAR IDIOMAS Y ENLACES    -->
+    <!-- ========================================== -->
+    <script>
+        // --- 1. DICCIONARIO DE CONTENIDOS Y ENLACES ---
+        // Aquí es donde configuras todos tus textos, imágenes y links de PDF
+        const siteData = {
+            es: {
+                // Textos de la web
+                mainTitle: "Sobrevive. Lucha. Conquista el Páramo.",
+                mainSubtitle: "Un CCG donde la brutalidad post-apocalíptica choca con el horror cósmico. Elige a tu Jefe, despliega Enclaves, equipa Mods y domina con tu clan: Asfalto, Pólvora, Sombra, Abismo, Horda o Neutrales.",
+                btnSteam: "Jugar en PC (Steam)",
+                btnAndroid: "Jugar en Android",
+                
+                feat1Title: "Combate Táctico",
+                feat1Desc: "Despliega tus cartas en los Enclaves correctos, asigna Mods a tus unidades y protege a tu Jefe a toda costa.",
+                feat2Title: "Economía de Agua",
+                feat2Desc: "Destruye y crea. Usa el Agua como única divisa para craftear cartas desde rareza Normal hasta Jefe.",
+                feat3Title: "Competitivo PvP",
+                feat3Desc: "Asciende en las clasificatorias desde Cuarzo hasta alcanzar el prestigioso rango Diamante.",
+                
+                resourcesTitle: "Documentos Oficiales",
+                txtPdfManual: "📄 Manual de Juego Completo (.pdf)",
+                txtPdfGuide: "📄 Guía Rápida de Supervivencia (.pdf)",
+                txtPdfLore: "📚 Lore del Páramo (.pdf)",
+                footerText: "© 2026 Páramo CCG. Todos los derechos reservados.",
+
+                // Enlaces de Tiendas e Imágenes (VERSIÓN ESPAÑOL)
+                imgBannerUrl: "https://via.placeholder.com/800x450/1a1a1a/ff5500?text=BANNER+ESPAÑOL", // CAMBIA ESTO por tu imagen en ES
+                urlSteam: "https://store.steampowered.com/", // Link a tu página de Steam en ES si es distinto
+                urlAndroid: "https://play.google.com/", // Link a Google Play
+                
+                // Enlaces de PDFs (VERSIÓN ESPAÑOL)
+                urlPdfManual: "archivos/manual_es.pdf",
+                urlPdfGuide: "archivos/guia_rapida_es.pdf",
+                urlPdfLore: "archivos/lore_es.pdf"
+            },
+            en: {
+                // Textos de la web
+                mainTitle: "Survive. Fight. Conquer the Wasteland.",
+                mainSubtitle: "A CCG where post-apocalyptic brutality collides with cosmic horror. Choose your Jefe, deploy Enclaves, equip Mods, and dominate with your clan: Asfalto, Pólvora, Sombra, Abismo, Horda, or Neutrals.",
+                btnSteam: "Play on PC (Steam)",
+                btnAndroid: "Play on Android",
+                
+                feat1Title: "Tactical Combat",
+                feat1Desc: "Deploy your cards in the right Enclaves, attach Mods to your units, and protect your Jefe at all costs.",
+                feat2Title: "Water Economy",
+                feat2Desc: "Destroy and create. Use Agua as the sole currency to craft cards from Normal to Jefe rarity.",
+                feat3Title: "Competitive PvP",
+                feat3Desc: "Climb the ranked ladder from Quartz all the way to the prestigious Diamond rank.",
+                
+                resourcesTitle: "Official Documents",
+                txtPdfManual: "📄 Complete Game Manual (.pdf)",
+                txtPdfGuide: "📄 Quick Survival Guide (.pdf)",
+                txtPdfLore: "📚 The Wasteland Lore (.pdf)",
+                footerText: "© 2026 Páramo CCG. All rights reserved.",
+
+                // Enlaces de Tiendas e Imágenes (VERSIÓN INGLÉS)
+                imgBannerUrl: "https://via.placeholder.com/800x450/1a1a1a/00e5ff?text=ENGLISH+BANNER", // CAMBIA ESTO por tu imagen en EN
+                urlSteam: "https://store.steampowered.com/?l=english", 
+                urlAndroid: "https://play.google.com/",
+                
+                // Enlaces de PDFs (VERSIÓN INGLÉS)
+                urlPdfManual: "archivos/manual_en.pdf",
+                urlPdfGuide: "archivos/quick_guide_en.pdf",
+                urlPdfLore: "archivos/lore_en.pdf"
+            }
+        };
+
+        // --- 2. LÓGICA DEL IDIOMA ---
+        let currentLang = 'es';
+
+        function initLanguage() {
+            // Detectar el idioma del navegador
+            const browserLang = navigator.language || navigator.userLanguage;
+            if (browserLang.startsWith('en')) {
+                currentLang = 'en';
+            } else {
+                currentLang = 'es'; // Por defecto castellano
+            }
+            applyLanguage(currentLang);
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            applyLanguage(currentLang);
+        }
+
+        function applyLanguage(lang) {
+            const data = siteData[lang];
+
+            // Actualizar textos
+            document.getElementById('mainTitle').innerText = data.mainTitle;
+            document.getElementById('mainSubtitle').innerText = data.mainSubtitle;
+            document.getElementById('btnSteam').innerText = data.btnSteam;
+            document.getElementById('btnAndroid').innerText = data.btnAndroid;
+            
+            document.getElementById('feat1Title').innerText = data.feat1Title;
+            document.getElementById('feat1Desc').innerText = data.feat1Desc;
+            document.getElementById('feat2Title').innerText = data.feat2Title;
+            document.getElementById('feat2Desc').innerText = data.feat2Desc;
+            document.getElementById('feat3Title').innerText = data.feat3Title;
+            document.getElementById('feat3Desc').innerText = data.feat3Desc;
+            
+            document.getElementById('resourcesTitle').innerText = data.resourcesTitle;
+            document.getElementById('linkPdfManual').innerText = data.txtPdfManual;
+            document.getElementById('linkPdfGuide').innerText = data.txtPdfGuide;
+            document.getElementById('linkPdfLore').innerText = data.txtPdfLore;
+            document.getElementById('footerText').innerText = data.footerText;
+
+            // Actualizar botón de idioma
+            document.getElementById('langToggleBtn').innerText = lang === 'es' ? '🌐 Cambiar a English' : '🌐 Switch to Español';
+
+            // Actualizar Imágenes (Source)
+            document.getElementById('mainBannerImg').src = data.imgBannerUrl;
+
+            // Actualizar Enlaces (HREF)
+            document.getElementById('linkSteam').href = data.urlSteam;
+            document.getElementById('linkAndroid').href = data.urlAndroid;
+            document.getElementById('linkPdfManual').href = data.urlPdfManual;
+            document.getElementById('linkPdfGuide').href = data.urlPdfGuide;
+            document.getElementById('linkPdfLore').href = data.urlPdfLore;
+        }
+
+        // Arrancar el script al cargar la página
+        window.onload = initLanguage;
+    </script>
 </body>
 </html>
