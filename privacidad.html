@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad — Páramo CCG</title>
+    <meta name="description" content="Política de Privacidad oficial de Páramo CCG (Android, Google Play y Steam / PC).">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #0a0a0c;
+            --bg-card: #15161a;
+            --text-main: #e0e0e0;
+            --text-muted: #9aa0a6;
+            --accent-green: #39ff14;
+            --accent-orange: #ff6b00;
+            --font-heading: 'Orbitron', sans-serif;
+            --font-body: 'Rajdhani', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.65;
+            font-size: 1.08rem;
+            background-image:
+                radial-gradient(circle at 15% 20%, rgba(57, 255, 20, 0.05) 0%, transparent 45%),
+                radial-gradient(circle at 85% 35%, rgba(255, 107, 0, 0.05) 0%, transparent 45%);
+            background-attachment: fixed;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        a {
+            color: var(--accent-green);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 12, 0.92);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            font-weight: 900;
+            color: var(--accent-green);
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .back-link {
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-orange);
+            text-decoration: none;
+        }
+
+        .lang-toggle {
+            background: transparent;
+            border: 2px solid var(--text-muted);
+            color: var(--text-main);
+            padding: 0.35rem 0.95rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: var(--font-heading);
+            font-weight: bold;
+            font-size: 0.85rem;
+            transition: all 0.25s ease;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.25);
+        }
+
+        main {
+            max-width: 920px;
+            margin: 2.5rem auto 4rem;
+            padding: 0 1.25rem;
+        }
+
+        .policy-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 2.2rem 2.4rem;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
+        }
+
+        .policy-card h1 {
+            font-size: 1.85rem;
+            color: #ffffff;
+            margin-bottom: 0.4rem;
+        }
+
+        .meta-line {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.6rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        section.policy-section {
+            margin-bottom: 1.75rem;
+        }
+
+        section.policy-section h2 {
+            font-size: 1.12rem;
+            color: var(--accent-orange);
+            margin-bottom: 0.65rem;
+        }
+
+        section.policy-section p {
+            margin-bottom: 0.65rem;
+        }
+
+        section.policy-section ul {
+            margin: 0.4rem 0 0.75rem 1.4rem;
+        }
+
+        section.policy-section li {
+            margin-bottom: 0.38rem;
+        }
+
+        .highlight-box {
+            background: rgba(57, 255, 20, 0.05);
+            border-left: 3px solid var(--accent-green);
+            padding: 0.9rem 1.1rem;
+            border-radius: 0 8px 8px 0;
+            margin: 0.9rem 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem 3rem;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        @media (max-width: 640px) {
+            .policy-card {
+                padding: 1.5rem 1.2rem;
+            }
+            .policy-card h1 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">PÁRAMO CCG</a>
+        <div class="nav-actions">
+            <a href="index.html" class="back-link" id="back-link"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+            <button id="lang-toggle" class="lang-toggle">EN</button>
+        </div>
+    </header>
+
+    <main>
+        <article class="policy-card" id="policy-es">
+            <h1>Política de Privacidad de Páramo CCG</h1>
+            <p class="meta-line">
+                <strong>Aplicación:</strong> Páramo CCG (Android / Google Play y PC / Steam) &nbsp;|&nbsp;
+                <strong>Última actualización:</strong> 16 de noviembre de 2026
+            </p>
+
+            <section class="policy-section">
+                <h2>1. Responsable del tratamiento y contacto</h2>
+                <p>El responsable del tratamiento de los datos recogidos a través de la aplicación y servicios online de <strong>Páramo CCG</strong> es el equipo desarrollador de <strong>Páramo CCG</strong>.</p>
+                <ul>
+                    <li><strong>Correo de contacto y privacidad:</strong> <a href="mailto:contact@paramoccg.com">contact@paramoccg.com</a></li>
+                    <li><strong>Sitio web oficial:</strong> <a href="https://paramoccg.com/">https://paramoccg.com/</a></li>
+                </ul>
+            </section>
+
+            <section class="policy-section">
+                <h2>2. Qué datos tratamos</h2>
+                <p>Para que Páramo CCG funcione de forma segura y sincronizada entre sesiones y plataformas, tratamos únicamente los datos necesarios para el servicio:</p>
+                <ul>
+                    <li><strong>Cuenta e identificadores de plataforma:</strong> identificador de usuario de Unity Gaming Services (UGS), nombre de jugador dentro del juego y credenciales de sesión; y, según la plataforma desde la que juegues, el identificador de cuenta de Google Play Games o de Steam (SteamID y nombre/avatar públicos).</li>
+                    <li><strong>Progreso de juego:</strong> colección de cartas, mazos, monedas virtuales (Agua), sobres, tickets, avatares, reversos, rango/ELO, logros, misiones, expediciones, historial de partidas y estadísticas.</li>
+                    <li><strong>Funciones sociales:</strong> lista de amigos, solicitudes de amistad, alianzas y mensajes enviados en el chat o en partida.</li>
+                    <li><strong>Compras integradas:</strong> identificador de transacción, producto digital adquirido, importe y estado de verificación. <strong>No recogemos ni almacenamos datos de tarjetas bancarias ni métodos de pago</strong>; los pagos son procesados íntegramente por Google Play Billing (Android) o Steam (PC).</li>
+                    <li><strong>Datos técnicos y diagnósticos:</strong> versión del juego, sistema operativo, modelo de dispositivo, registros de errores/caídas, latencia y dirección IP técnica necesaria para la conexión y protección frente a abusos.</li>
+                    <li><strong>Soporte y reportes de bugs:</strong> la información y descripción de errores que decidas enviarnos voluntariamente desde el formulario de soporte o al correo <a href="mailto:contact@paramoccg.com">contact@paramoccg.com</a>.</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>Sin publicidad invasiva ni venta de datos:</strong> Páramo CCG no muestra anuncios de redes publicitarias de terceros ni vende o alquila tus datos personales a terceros.
+                </div>
+            </section>
+
+            <section class="policy-section">
+                <h2>3. Finalidades del tratamiento</h2>
+                <ul>
+                    <li>Crear, autenticar y mantener tu cuenta de juego.</li>
+                    <li>Guardar y validar de forma autoritativa tu progreso, colección, recompensas, torneos y partidas online.</li>
+                    <li>Permitir el emparejamiento (matchmaking), rankings, amigos, alianzas y chat.</li>
+                    <li>Validar compras digitales realizadas a través de Google Play o Steam y entregar el contenido adquirido.</li>
+                    <li>Prevenir trampas, fraudes, suplantación de identidad y usos abusivos del servicio.</li>
+                    <li>Moderar denuncias en funciones sociales y responder a tus consultas o reportes técnicos.</li>
+                    <li>Cumplir las obligaciones legales y fiscales aplicables.</li>
+                </ul>
+            </section>
+
+            <section class="policy-section">
+                <h2>4. Base legal</h2>
+                <ul>
+                    <li><strong>Ejecución del contrato:</strong> necesaria para prestarte el servicio de juego solicitado al registrarte o iniciar sesión.</li>
+                    <li><strong>Interés legítimo:</strong> garantizar la integridad competitiva, evitar trampas/fraudes, mantener la seguridad de los servidores y mejorar la estabilidad técnica.</li>
+                    <li><strong>Consentimiento:</strong> cuando nos escribes voluntariamente a soporte o envías un informe de error.</li>
+                    <li><strong>Obligación legal:</strong> conservación de registros de transacciones cuando la ley fiscal lo exige.</li>
+                </ul>
+            </section>
+
+            <section class="policy-section">
+                <h2>5. Terceros y proveedores tecnológicos</h2>
+                <p>Páramo CCG utiliza proveedores de infraestructura esenciales para operar el juego:</p>
+                <ul>
+                    <li><strong>Unity Gaming Services (Unity Technologies):</strong> autenticación de jugadores, guardado en la nube (Cloud Save), lógica autoritativa en servidor (Cloud Code), clasificaciones (Leaderboards) y servicios online.</li>
+                    <li><strong>Google LLC / Google Play (en Android):</strong> distribución de la aplicación, servicios de cuenta de Google Play y procesamiento seguro de compras in-app mediante Google Play Billing.</li>
+                    <li><strong>Valve Corporation / Steam (en PC):</strong> autenticación y procesamiento de compras mediante Steamworks.</li>
+                    <li><strong>Autoridades públicas:</strong> únicamente cuando exista un requerimiento u obligación legal.</li>
+                </ul>
+            </section>
+
+            <section class="policy-section">
+                <h2>6. Transferencias internacionales y conservación</h2>
+                <p>Nuestros proveedores de nube (como Unity Technologies, Google LLC o Valve) pueden procesar datos en servidores situados fuera del Espacio Económico Europeo bajo garantías legales adecuadas (como Cláusulas Contractuales Tipo o marcos de adecuación reconocidos).</p>
+                <ul>
+                    <li><strong>Datos de cuenta y progreso:</strong> se conservan mientras tu cuenta permanezca activa o hasta que solicites su eliminación.</li>
+                    <li><strong>Registros de compras:</strong> se conservan durante los plazos legales y fiscales obligatorios.</li>
+                    <li><strong>Registros técnicos, seguridad y moderación:</strong> se conservan durante el tiempo estrictamente necesario para resolver incidencias, prevenir fraudes o aplicar sanciones.</li>
+                </ul>
+            </section>
+
+            <section class="policy-section">
+                <h2>7. Eliminación de cuenta y datos</h2>
+                <p>Puedes eliminar tu cuenta y solicitar el borrado de tus datos personales en cualquier momento por cualquiera de estas dos vías:</p>
+                <ul>
+                    <li><strong>Desde dentro del juego:</strong> abre el panel de <em>Perfil / Cuenta</em> y utiliza la opción de <strong>Eliminar cuenta</strong>.</li>
+                    <li><strong>Por correo electrónico:</strong> escribe a <a href="mailto:contact@paramoccg.com">contact@paramoccg.com</a> desde el correo asociado o indicando tu nombre de jugador e identificador de cuenta, con el asunto <em>"Eliminación de cuenta - Páramo CCG"</em>.</li>
+                </ul>
+                <p>Tras verificar tu solicitud, eliminaremos tu perfil, progreso almacenado y credenciales asociadas en un plazo máximo de 30 días, salvo los datos de transacciones que deban conservarse por obligación legal o prevención de fraude.</p>
+            </section>
+
+            <section class="policy-section">
+                <h2>8. Derechos de los usuarios</h2>
+                <p>De conformidad con el Reglamento General de Protección de Datos (RGPD) y la normativa aplicable, puedes ejercer tus derechos de acceso, rectificación, supresión, limitación del tratamiento, oposición y portabilidad escribiendo a <a href="mailto:contact@paramoccg.com">contact@paramoccg.com</a>. Asimismo, tienes derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD) u otra autoridad de control competente.</p>
+            </section>
+
+            <section class="policy-section">
+                <h2>9. Menores de edad</h2>
+                <p>Páramo CCG no está dirigido a menores por debajo de la edad mínima legal establecida en su país (13 años en adelante o la edad mínima aplicable en tu jurisdicción sin consentimiento parental). No recopilamos de forma consciente datos personales de menores sin la debida autorización de sus padres o tutores. Si consideras que un menor ha facilitado datos sin autorización, contáctanos en <a href="mailto:contact@paramoccg.com">contact@paramoccg.com</a> para proceder a su eliminación inmediata.</p>
+            </section>
+
+            <section class="policy-section">
+                <h2>10. Seguridad y cambios en esta política</h2>
+                <p>Todas las comunicaciones entre el cliente del juego y los servidores se cifran mediante HTTPS/TLS, y el estado competitivo se valida en servidor autoritativo. Podemos actualizar esta Política de Privacidad para adaptarla a nuevas funciones o requisitos legales; cualquier cambio se publicará en esta misma URL indicando la nueva fecha de actualización.</p>
+            </section>
+        </article>
+
+        <article class="policy-card" id="policy-en" style="display: none;">
+            <h1>Privacy Policy — Páramo CCG</h1>
+            <p class="meta-line">
+                <strong>Application:</strong> Páramo CCG (Android / Google Play &amp; PC / Steam) &nbsp;|&nbsp;
+                <strong>Last updated:</strong> November 16, 2026
+            </p>
+
+            <section class="policy-section">
+                <h2>1. Data Controller &amp; Contact</h2>
+                <p>The controller responsible for personal data processed through the <strong>Páramo CCG</strong> application and online services is the <strong>Páramo CCG</strong> development team.</p>
+                <ul>
+                    <li><strong>Privacy &amp; Support Email:</strong> <a href="mailto:contact@paramoccg.com">contact@paramoccg.com</a></li>
+                    <li><strong>Official Website:</strong> <a href="https://paramoccg.com/">https://paramoccg.com/</a></li>
+                </ul>
+            </section>
+
+            <section class="policy-section">
+                <h2>2. Data We Collect and Process</h2>
+                <p>To keep Páramo CCG running securely and synchronized across sessions and platforms, we only process data strictly necessary to provide the game service:</p>
+                <ul>
+                    <li><strong>Account &amp; Platform Identifiers:</strong> Unity Gaming Services (UGS) player ID, in-game display name, session credentials, and—depending on your platform—your Google Play Games or Steam account identifier (SteamID, public username/avatar).</li>
+                    <li><strong>Gameplay Progress:</strong> card collection, decks, virtual currencies (Water), packs, tickets, avatars, card backs, rank/ELO, achievements, missions, expeditions, match history, and statistics.</li>
+                    <li><strong>Social Features:</strong> friends list, friend requests, alliances, and chat/in-match messages.</li>
+                    <li><strong>In-App Purchases:</strong> transaction ID, purchased digital item, amount, and verification status. <strong>We never collect or store credit card or banking details</strong>; all payments are handled securely by Google Play Billing (Android) or Steam (PC).</li>
+                    <li><strong>Technical &amp; Diagnostic Data:</strong> game version, operating system, device identifiers/model, crash/error logs, and technical IP address required for server connectivity and anti-abuse security.</li>
+                    <li><strong>Support &amp; Bug Reports:</strong> messages and diagnostic details you voluntarily submit via the in-game bug report panel or by emailing <a href="mailto:contact@paramoccg.com">contact@paramoccg.com</a>.</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>No third-party ad networks or data sales:</strong> Páramo CCG does not serve third-party behavioral advertising and never sells or rents your personal data.
+                </div>
+            </section>
+
+            <section class="policy-section">
+                <h2>3. How We Use Your Data</h2>
+                <ul>
+                    <li>Create, authenticate, and maintain your player account.</li>
+                    <li>Authoritatively store and validate your progression, collection, rewards, tournaments, and online matches.</li>
+                    <li>Provide matchmaking, leaderboards, friends, alliances, and chat.</li>
+                    <li>Verify digital purchases made via Google Play or Steam and grant purchased items.</li>
+                    <li>Prevent cheating, fraud, tampering, and abuse.</li>
+                    <li>Moderate reports in social features and respond to player support or bug reports.</li>
+                    <li>Comply with applicable legal and tax obligations.</li>
+                </ul>
+            </section>
+
+            <section class="policy-section">
+                <h2>4. Legal Basis</h2>
+                <ul>
+                    <li><strong>Performance of a contract:</strong> necessary to deliver the game features you request when creating or accessing an account.</li>
+                    <li><strong>Legitimate interest:</strong> safeguarding fair play, preventing fraud/cheats, and ensuring server stability and security.</li>
+                    <li><strong>Consent:</strong> when you voluntarily contact support or submit an optional bug report.</li>
+                    <li><strong>Legal obligation:</strong> retaining purchase records where required by applicable financial or tax law.</li>
+                </ul>
+            </section>
+
+            <section class="policy-section">
+                <h2>5. Third-Party Service Providers</h2>
+                <p>Páramo CCG relies strictly on core technical providers needed to operate the game:</p>
+                <ul>
+                    <li><strong>Unity Gaming Services (Unity Technologies):</strong> player authentication, Cloud Save, authoritative server logic (Cloud Code), Leaderboards, and multiplayer services.</li>
+                    <li><strong>Google LLC / Google Play (on Android):</strong> app distribution, Google Play services, and secure in-app purchase processing via Google Play Billing.</li>
+                    <li><strong>Valve Corporation / Steam (on PC):</strong> platform authentication and purchase processing via Steamworks.</li>
+                    <li><strong>Public authorities:</strong> only when strictly required by applicable law.</li>
+                </ul>
+            </section>
+
+            <section class="policy-section">
+                <h2>6. International Transfers &amp; Retention</h2>
+                <p>Cloud infrastructure providers (such as Unity Technologies, Google LLC, or Valve) may process data on servers outside the European Economic Area using recognized safeguards such as Standard Contractual Clauses or adequacy decisions.</p>
+                <ul>
+                    <li><strong>Account &amp; progression data:</strong> retained while your account remains active or until you request deletion.</li>
+                    <li><strong>Purchase records:</strong> retained for the periods required by applicable tax and consumer laws.</li>
+                    <li><strong>Security &amp; moderation logs:</strong> retained only as long as necessary to investigate incidents and prevent abuse.</li>
+                </ul>
+            </section>
+
+            <section class="policy-section">
+                <h2>7. Account &amp; Data Deletion</h2>
+                <p>You can delete your account and personal data at any time through either method:</p>
+                <ul>
+                    <li><strong>In-Game:</strong> open the <em>Profile / Account</em> panel inside Páramo CCG and select <strong>Delete Account</strong>.</li>
+                    <li><strong>By Email:</strong> send a request to <a href="mailto:contact@paramoccg.com">contact@paramoccg.com</a> specifying your player name and account ID with the subject <em>"Account Deletion - Páramo CCG"</em>.</li>
+                </ul>
+                <p>Upon verification, we will permanently delete your profile, stored progress, and credentials within 30 days, except for transaction records required to be retained for legal or anti-fraud compliance.</p>
+            </section>
+
+            <section class="policy-section">
+                <h2>8. Your Privacy Rights</h2>
+                <p>Under the GDPR and applicable data protection laws, you may request access, rectification, erasure, restriction of processing, objection, or data portability by contacting <a href="mailto:contact@paramoccg.com">contact@paramoccg.com</a>. You also have the right to lodge a complaint with your local data protection authority (such as the Spanish Data Protection Agency, AEPD).</p>
+            </section>
+
+            <section class="policy-section">
+                <h2>9. Children's Privacy</h2>
+                <p>Páramo CCG is not directed at children under the minimum digital consent age in their country (13 years or the applicable minimum age in your jurisdiction without parental consent). We do not knowingly collect personal data from children without verifiable parental authorization. If you believe a minor has provided personal data without consent, please contact us at <a href="mailto:contact@paramoccg.com">contact@paramoccg.com</a> for prompt deletion.</p>
+            </section>
+
+            <section class="policy-section">
+                <h2>10. Security &amp; Policy Updates</h2>
+                <p>All client-server communications are encrypted over HTTPS/TLS, and competitive match logic runs on authoritative servers. We may update this Privacy Policy to reflect new features or legal requirements; updates will be published at this URL with a revised date.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <p id="footer-copy">&copy; 2026 Páramo CCG &mdash; <a href="index.html">paramoccg.com</a> &mdash; <a href="mailto:contact@paramoccg.com">contact@paramoccg.com</a></p>
+    </footer>
+
+    <script>
+        function applyLang(lang) {
+            const isEn = (lang === 'en');
+            document.documentElement.lang = isEn ? 'en' : 'es';
+            document.title = isEn ? 'Privacy Policy — Páramo CCG' : 'Política de Privacidad — Páramo CCG';
+            document.getElementById('policy-es').style.display = isEn ? 'none' : 'block';
+            document.getElementById('policy-en').style.display = isEn ? 'block' : 'none';
+            document.getElementById('back-link').innerHTML = isEn
+                ? '<i class="fas fa-arrow-left"></i> Back to Home'
+                : '<i class="fas fa-arrow-left"></i> Volver al inicio';
+            document.getElementById('lang-toggle').textContent = isEn ? 'ES' : 'EN';
+            localStorage.setItem('paramo-lang', isEn ? 'en' : 'es');
+        }
+
+        function initPolicyLang() {
+            const params = new URLSearchParams(window.location.search);
+            const urlLang = (params.get('lang') || '').toLowerCase();
+            if (urlLang === 'en' || urlLang === 'es') {
+                applyLang(urlLang);
+                return;
+            }
+            const saved = localStorage.getItem('paramo-lang');
+            if (saved === 'en' || saved === 'es') {
+                applyLang(saved);
+                return;
+            }
+            const navLang = (navigator.language || navigator.userLanguage || 'es').toLowerCase();
+            applyLang(navLang.startsWith('es') ? 'es' : 'en');
+        }
+
+        document.getElementById('lang-toggle').addEventListener('click', () => {
+            const current = document.documentElement.lang === 'en' ? 'en' : 'es';
+            applyLang(current === 'en' ? 'es' : 'en');
+        });
+
+        document.addEventListener('DOMContentLoaded', initPolicyLang);
+    </script>
+</body>
+</html>
