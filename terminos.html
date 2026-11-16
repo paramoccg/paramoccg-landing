@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Términos del Servicio — Páramo CCG</title>
+    <meta name="description" content="Términos y Condiciones de Uso oficiales de Páramo CCG (Android, Google Play y Steam / PC).">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #0a0a0c;
+            --bg-card: #15161a;
+            --text-main: #e0e0e0;
+            --text-muted: #9aa0a6;
+            --accent-green: #39ff14;
+            --accent-orange: #ff6b00;
+            --font-heading: 'Orbitron', sans-serif;
+            --font-body: 'Rajdhani', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.65;
+            font-size: 1.08rem;
+            background-image:
+                radial-gradient(circle at 15% 20%, rgba(57, 255, 20, 0.05) 0%, transparent 45%),
+                radial-gradient(circle at 85% 35%, rgba(255, 107, 0, 0.05) 0%, transparent 45%);
+            background-attachment: fixed;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        a {
+            color: var(--accent-green);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 12, 0.92);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            font-weight: 900;
+            color: var(--accent-green);
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .back-link {
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-orange);
+            text-decoration: none;
+        }
+
+        .lang-toggle {
+            background: transparent;
+            border: 2px solid var(--text-muted);
+            color: var(--text-main);
+            padding: 0.35rem 0.95rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: var(--font-heading);
+            font-weight: bold;
+            font-size: 0.85rem;
+            transition: all 0.25s ease;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.25);
+        }
+
+        main {
+            max-width: 920px;
+            margin: 2.5rem auto 4rem;
+            padding: 0 1.25rem;
+        }
+
+        .policy-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 2.2rem 2.4rem;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
+        }
+
+        .policy-card h1 {
+            font-size: 1.85rem;
+            color: #ffffff;
+            margin-bottom: 0.4rem;
+        }
+
+        .meta-line {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.6rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        section.policy-section {
+            margin-bottom: 1.75rem;
+        }
+
+        section.policy-section h2 {
+            font-size: 1.12rem;
+            color: var(--accent-orange);
+            margin-bottom: 0.65rem;
+        }
+
+        section.policy-section p {
+            margin-bottom: 0.65rem;
+        }
+
+        section.policy-section ul {
+            margin: 0.4rem 0 0.75rem 1.4rem;
+        }
+
+        section.policy-section li {
+            margin-bottom: 0.38rem;
+        }
+
+        .highlight-box {
+            background: rgba(57, 255, 20, 0.05);
+            border-left: 3px solid var(--accent-green);
+            padding: 0.9rem 1.1rem;
+            border-radius: 0 8px 8px 0;
+            margin: 0.9rem 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem 3rem;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        @media (max-width: 640px) {
+            .policy-card {
+                padding: 1.5rem 1.2rem;
+            }
+            .policy-card h1 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">PÁRAMO CCG</a>
+        <div class="nav-actions">
+            <a href="index.html" class="back-link" id="back-link"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+            <button id="lang-toggle" class="lang-toggle">EN</button>
+        </div>
+    </header>
+
+    <main>
+        <article class="policy-card" id="terms-es">
+            <h1>Términos del Servicio de Páramo CCG</h1>
+            <p class="meta-line">
+                <strong>Aplicación:</strong> Páramo CCG (Android / Google Play y PC / Steam) &nbsp;|&nbsp;
+                <strong>Última actualización:</strong> 16 de noviembre de 2026
+            </p>
+
+            <section class="policy-section">
+                <h2>1. Aceptación de los términos y contacto</h2>
+                <p>Al descargar, instalar, acceder o jugar a <strong>Páramo CCG</strong>, aceptas quedar vinculado por estos Términos del Servicio y por nuestra <a href="privacidad.html">Política de Privacidad</a>. Si no estás de acuerdo con alguno de estos términos, no utilices el juego.</p>
+                <ul>
+                    <li><strong>Responsable / Desarrollador:</strong> equipo de Páramo CCG</li>
+                    <li><strong>Correo de soporte y contacto legal:</strong> <a href="mailto:contact@paramoccg.com">contact@paramoccg.com</a></li>
+                    <li><strong>Sitio web oficial:</strong> <a href="https://paramoccg.com/">https://paramoccg.com/</a></li>
+                </ul>
+                <p>Debes tener al menos la edad mínima legal aplicable en tu país de residencia (o contar con autorización verificable de tus padres o tutores) para crear una cuenta o realizar compras.</p>
+            </section>
+
+            <section class="policy-section">
+                <h2>2. Licencia de uso y propiedad intelectual</h2>
+                <p>Páramo CCG, su código fuente, reglas, textos, ilustraciones de cartas, música, efectos de sonido, marcas y diseño gráfico son propiedad intelectual del desarrollador o de sus respectivos licenciantes.</p>
+                <p>Te concedemos una licencia personal, limitada, no exclusiva, intransferible y revocable para descargar y jugar a Páramo CCG con fines estrictamente lúdicos y no comerciales.</p>
+                <ul>
+                    <li>No puedes copiar, modificar, descompilar, realizar ingeniería inversa ni redistribuir el software o los activos del juego.</li>
+                    <li>Queda prohibida la compraventa, alquiler o cesión comercial de cuentas, cartas, monedas virtuales u otros elementos de juego fuera de las plataformas oficiales.</li>
+                </ul>
+            </section>
+
+            <section class="policy-section">
+                <h2>3. Cuentas de jugador y seguridad</h2>
+                <ul>
+                    <li>Al registrarte debes proporcionar un nombre de usuario válido y una dirección de correo real para verificación y recuperación.</li>
+                    <li>Eres responsable de mantener la confidencialidad de tu contraseña y de toda la actividad realizada desde tu cuenta.</li>
+                    <li>Puedes solicitar la eliminación permanente de tu cuenta en cualquier momento desde el menú <em>Perfil / Cuenta</em> del juego o escribiendo a <a href="mailto:contact@paramoccg.com">contact@paramoccg.com</a>.</li>
+                </ul>
+            </section>
+
+            <section class="policy-section">
+                <h2>4. Compras integradas y bienes virtuales</h2>
+                <p>Páramo CCG puede ofrecer contenido digital opcional mediante compras dentro de la aplicación (como moneda virtual <em>Agua</em>, sobres, tickets o cosméticos), procesadas íntegramente por <strong>Google Play Billing</strong> (Android) o <strong>Steam</strong> (PC).</p>
+                <ul>
+                    <li>Las monedas y objetos virtuales carecen de valor monetario fuera del juego y constituyen una licencia de uso digital vinculada a tu cuenta.</li>
+                    <li>Los precios, impuestos y condiciones de pago y desistimiento/reembolso se rigen por la tienda oficial desde la que realices la compra (Google Play o Steam), sin perjuicio de los derechos imperativos que te correspondan como consumidor conforme a la legislación vigente (incluida la normativa de la Unión Europea y España).</li>
+                    <li>El intento de fraude, contracargo abusivo o manipulación de recibos de compra puede conllevar la revocación del contenido afectado y la suspensión de la cuenta.</li>
+                </ul>
+            </section>
+
+            <section class="policy-section">
+                <h2>5. Normas de conducta, juego limpio y funciones sociales</h2>
+                <p>Páramo CCG valida la lógica competitiva, economía y progresión de forma autoritativa en servidor. Para mantener un entorno justo y respetuoso, está estrictamente prohibido:</p>
+                <ul>
+                    <li>Usar cheats, bots, scripts automatizados, modificaciones del cliente o explotar fallos (<em>exploits</em>) para alterar partidas, economía o clasificaciones.</li>
+                    <li>Suplantar a otros jugadores o al equipo de desarrollo.</li>
+                    <li>Enviar mensajes abusivos, discriminatorios, spam, acoso o contenido ilícito a través del chat de amigos o alianzas, o usar nombres inapropiados.</li>
+                </ul>
+                <div class="highlight-box">
+                    El juego incluye herramientas dentro de <em>Opciones / Escape &rarr; Bloquear usuario</em> para bloquear a otros jugadores (ocultando sus mensajes de chat) y reportar conductas abusivas a nuestro equipo de moderación.
+                </div>
+                <p>Nos reservamos el derecho de suspender, restringir o cancelar cuentas que incumplan estas normas de forma grave o reiterada.</p>
+            </section>
+
+            <section class="policy-section">
+                <h2>6. Actualizaciones, equilibrio y disponibilidad</h2>
+                <p>Como juego de cartas competitivo en evolución, podemos actualizar el cliente, ajustar estadísticas o efectos de cartas por equilibrio competitivo, modificar modos o realizar tareas de mantenimiento en los servidores cuando sea necesario.</p>
+            </section>
+
+            <section class="policy-section">
+                <h2>7. Limitación de responsabilidad y ley aplicable</h2>
+                <p>El servicio se ofrece conforme a su disponibilidad técnica habitual; no garantizamos disponibilidad ininterrumpida frente a fallos de red de terceros o mantenimiento de infraestructura. Nada en estos términos excluye ni limita derechos legalmente irrenunciables reconocidos por la normativa de protección de consumidores aplicable en España y el Espacio Económico Europeo.</p>
+            </section>
+
+            <section class="policy-section">
+                <h2>8. Cambios en estos términos</h2>
+                <p>Podemos actualizar estos Términos del Servicio para adaptarlos a nuevas funciones del juego o cambios legales. La versión vigente estará siempre publicada en esta URL con su fecha de actualización.</p>
+            </section>
+        </article>
+
+        <article class="policy-card" id="terms-en" style="display: none;">
+            <h1>Terms of Service — Páramo CCG</h1>
+            <p class="meta-line">
+                <strong>Application:</strong> Páramo CCG (Android / Google Play &amp; PC / Steam) &nbsp;|&nbsp;
+                <strong>Last updated:</strong> November 16, 2026
+            </p>
+
+            <section class="policy-section">
+                <h2>1. Acceptance of Terms &amp; Contact</h2>
+                <p>By downloading, installing, accessing, or playing <strong>Páramo CCG</strong>, you agree to be bound by these Terms of Service and our <a href="privacidad.html?lang=en">Privacy Policy</a>. If you do not agree with these terms, please do not use the game.</p>
+                <ul>
+                    <li><strong>Developer / Operator:</strong> Páramo CCG Team</li>
+                    <li><strong>Support &amp; Legal Contact Email:</strong> <a href="mailto:contact@paramoccg.com">contact@paramoccg.com</a></li>
+                    <li><strong>Official Website:</strong> <a href="https://paramoccg.com/">https://paramoccg.com/</a></li>
+                </ul>
+                <p>You must meet the minimum legal age requirement in your jurisdiction (or have verifiable authorization from a parent or legal guardian) to create an account or make purchases.</p>
+            </section>
+
+            <section class="policy-section">
+                <h2>2. License &amp; Intellectual Property</h2>
+                <p>Páramo CCG, including its source code, game rules, text, card artwork, audio, trademarks, and visual design, is protected by intellectual property laws and belongs to the developer or its licensors.</p>
+                <p>We grant you a personal, limited, non-exclusive, non-transferable, revocable license to download and play Páramo CCG for personal, non-commercial entertainment.</p>
+                <ul>
+                    <li>You may not copy, modify, decompile, reverse engineer, or redistribute the game software or assets.</li>
+                    <li>Buying, selling, renting, or commercially trading accounts, cards, virtual currencies, or in-game items outside official platform features is strictly prohibited.</li>
+                </ul>
+            </section>
+
+            <section class="policy-section">
+                <h2>3. Player Accounts &amp; Security</h2>
+                <ul>
+                    <li>When registering, you must provide a valid username and an accurate email address for verification and recovery.</li>
+                    <li>You are responsible for safeguarding your login credentials and for all activity conducted under your account.</li>
+                    <li>You may permanently delete your account at any time from the in-game <em>Profile / Account</em> menu or by contacting <a href="mailto:contact@paramoccg.com">contact@paramoccg.com</a>.</li>
+                </ul>
+            </section>
+
+            <section class="policy-section">
+                <h2>4. In-App Purchases &amp; Virtual Items</h2>
+                <p>Páramo CCG may offer optional digital content through in-app purchases (such as virtual currency <em>Water</em>, packs, tickets, or cosmetics), processed exclusively by <strong>Google Play Billing</strong> (Android) or <strong>Steam</strong> (PC).</p>
+                <ul>
+                    <li>Virtual currencies and items hold no real-world monetary value and represent a limited digital license tied to your account.</li>
+                    <li>Pricing, applicable taxes, and refund/withdrawal rules are governed by the store through which you complete the transaction (Google Play or Steam), without prejudice to mandatory consumer protection rights under applicable law (including European Union and Spanish consumer law).</li>
+                    <li>Payment fraud, abusive chargebacks, or receipt tampering may result in revocation of the granted items and account suspension.</li>
+                </ul>
+            </section>
+
+            <section class="policy-section">
+                <h2>5. Code of Conduct, Fair Play &amp; Social Features</h2>
+                <p>Páramo CCG validates competitive match logic, economy, and progression authoritatively on its servers. To preserve a fair and safe environment, you agree not to:</p>
+                <ul>
+                    <li>Use cheats, bots, automated scripts, client tampering, or exploit bugs to alter gameplay, economy, or leaderboards.</li>
+                    <li>Impersonate other players or the development team.</li>
+                    <li>Send abusive, harassing, discriminatory, spam, or unlawful messages in friend/alliance chat, or choose inappropriate names.</li>
+                </ul>
+                <div class="highlight-box">
+                    The game provides an in-game <em>System Menu &rarr; Block User</em> tool so you can block players (hiding all of their chat messages) and report misconduct to our moderation team.
+                </div>
+                <p>We reserve the right to suspend, restrict, or terminate accounts involved in severe or repeated violations of these rules.</p>
+            </section>
+
+            <section class="policy-section">
+                <h2>6. Updates, Game Balance &amp; Availability</h2>
+                <p>As a live competitive card game, we may update client software, rebalance cards or formats, modify game modes, or perform server maintenance when required.</p>
+            </section>
+
+            <section class="policy-section">
+                <h2>7. Limitation of Liability &amp; Governing Law</h2>
+                <p>The service is provided based on standard technical availability; uninterrupted uptime cannot be guaranteed during external network outages or infrastructure maintenance. Nothing in these terms excludes or limits any non-waivable statutory consumer rights under applicable European Union or Spanish law.</p>
+            </section>
+
+            <section class="policy-section">
+                <h2>8. Changes to These Terms</h2>
+                <p>We may update these Terms of Service to reflect new game features or legal obligations. The current version will always remain available at this URL with its latest revision date.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <p id="footer-copy">&copy; 2026 Páramo CCG &mdash; <a href="index.html">paramoccg.com</a> &mdash; <a href="privacidad.html" id="privacy-footer-link">Privacidad</a> &mdash; <a href="mailto:contact@paramoccg.com">contact@paramoccg.com</a></p>
+    </footer>
+
+    <script>
+        function applyLang(lang) {
+            const isEn = (lang === 'en');
+            document.documentElement.lang = isEn ? 'en' : 'es';
+            document.title = isEn ? 'Terms of Service — Páramo CCG' : 'Términos del Servicio — Páramo CCG';
+            document.getElementById('terms-es').style.display = isEn ? 'none' : 'block';
+            document.getElementById('terms-en').style.display = isEn ? 'block' : 'none';
+            document.getElementById('back-link').innerHTML = isEn
+                ? '<i class="fas fa-arrow-left"></i> Back to Home'
+                : '<i class="fas fa-arrow-left"></i> Volver al inicio';
+            const privLink = document.getElementById('privacy-footer-link');
+            if (privLink) {
+                privLink.textContent = isEn ? 'Privacy Policy' : 'Política de privacidad';
+                privLink.href = isEn ? 'privacidad.html?lang=en' : 'privacidad.html';
+            }
+            document.getElementById('lang-toggle').textContent = isEn ? 'ES' : 'EN';
+            localStorage.setItem('paramo-lang', isEn ? 'en' : 'es');
+        }
+
+        function initTermsLang() {
+            const params = new URLSearchParams(window.location.search);
+            const urlLang = (params.get('lang') || '').toLowerCase();
+            if (urlLang === 'en' || urlLang === 'es') {
+                applyLang(urlLang);
+                return;
+            }
+            const saved = localStorage.getItem('paramo-lang');
+            if (saved === 'en' || saved === 'es') {
+                applyLang(saved);
+                return;
+            }
+            const navLang = (navigator.language || navigator.userLanguage || 'es').toLowerCase();
+            applyLang(navLang.startsWith('es') ? 'es' : 'en');
+        }
+
+        document.getElementById('lang-toggle').addEventListener('click', () => {
+            const current = document.documentElement.lang === 'en' ? 'en' : 'es';
+            applyLang(current === 'en' ? 'es' : 'en');
+        });
+
+        document.addEventListener('DOMContentLoaded', initTermsLang);
+    </script>
+</body>
+</html>
