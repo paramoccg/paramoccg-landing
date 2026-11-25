@@ -88,15 +88,16 @@
         }
 
         .lang-toggle {
-            background: transparent;
+            background: var(--bg-dark);
             border: 2px solid var(--text-muted);
             color: var(--text-main);
-            padding: 0.4rem 1rem;
+            padding: 0.4rem 0.9rem;
             border-radius: 20px;
             cursor: pointer;
             font-family: var(--font-heading);
             font-weight: bold;
             transition: all 0.3s ease;
+            outline: none;
         }
 
         .lang-toggle:hover {
@@ -603,7 +604,17 @@
                 <a href="#" id="steam-link" title="Steam"><i class="fab fa-steam"></i></a>
                 <a href="#" id="android-link" title="Google Play"><i class="fab fa-google-play"></i></a>
             </div>
-            <button class="lang-toggle" id="lang-toggle">EN / ES</button>
+            <select class="lang-toggle" id="lang-select" aria-label="Idioma">
+                <option value="es">ES</option>
+                <option value="en">EN</option>
+                <option value="pt">PT</option>
+                <option value="fr">FR</option>
+                <option value="de">DE</option>
+                <option value="it">IT</option>
+                <option value="ja">JA</option>
+                <option value="zh">ZH</option>
+                <option value="ru">RU</option>
+            </select>
         </div>
     </header>
 
@@ -919,6 +930,204 @@
             }
         };
 
+        const EN_ASSETS = {
+            pdfManual: translations.en.pdfManual,
+            pdfGuide: translations.en.pdfGuide,
+            pdfLore: translations.en.pdfLore,
+            heroBg: translations.en.heroBg,
+            premiumImg: translations.en.premiumImg,
+            imgAsfalto: translations.en.imgAsfalto,
+            imgPolvora: translations.en.imgPolvora,
+            imgSombra: translations.en.imgSombra,
+            imgHorda: translations.en.imgHorda,
+            imgAbismo: translations.en.imgAbismo
+        };
+
+        Object.assign(translations, {
+            pt: {
+                navWiki: "Wiki", navNews: "Notícias",
+                heroTitle: "PÁRAMO <span>CCG</span>",
+                heroSubtitle: "Sobreviva no ermo. Domine a Fenda. O CCG tático competitivo.",
+                btnSteam: "Jogar no Steam", btnAndroid: "Jogar no Google Play",
+                loreText: "O mundo perfeito de Vergel foi dilacerado quando a Fenda se abriu, vomitando monstros interdimensionais. Em uma tentativa desesperada, os líderes mundiais desencadearam uma guerra nuclear. Agora, o que resta é Páramo: um ermo radioativo onde só os mais fortes sobrevivem. Escolha seu clã. Construa seu baralho. Prove quem manda no ermo.",
+                clansTitle: "Escolha seu Clã",
+                featSocialTitle: "SOCIAL", featSocialDesc: "Jogue com amigos e alianças",
+                featCompTitle: "COMPETITIVO", featCompDesc: "Torneios, draft, rankings e troféus",
+                featFairTitle: "JUSTO", featFairDesc: "Crie e destrua suas cartas",
+                featFunTitle: "DIVERTIDO", featFunDesc: "Gameplay rápido e desafiador",
+                featBalTitle: "EQUILIBRADO", featBalDesc: "Proteção contra duplicadas e cartas premium",
+                featDeepTitle: "PROFUNDO", featDeepDesc: "50 cartas por baralho, 1 Enclave e 1 chefe principal",
+                clanAsfalto: "Asfalto", resAsfalto: "Recurso: Gasolina", descAsfalto: "Nômades motorizados. Velocidade letal e ataques relâmpago.",
+                clanPolvora: "Pólvora", resPolvora: "Recurso: Metal", descPolvora: "Engenheiros militarizados. Bunkers, armadilhas e artilharia pesada.",
+                clanSombra: "Sombra", resSombra: "Recurso: Estramônio", descSombra: "Cultistas místicos. Magia negra e aberrações controladas.",
+                clanHorda: "Horda", resHorda: "Recurso: Sangue", descHorda: "Força bruta. Orcs, goblins e bestas em veículos destruídos.",
+                clanAbismo: "Abismo", resAbismo: "Recurso: Éter", descAbismo: "Aberrações cósmicas. Manipulam mentes e quebram as regras.",
+                downloadsTitle: "Documentação Oficial", docManual: "Manual de Regras", docGuide: "Guia Rápido", docLore: "Mitologia e Lore", btnDownload: "Baixar PDF",
+                descManual: "Aprenda todas as mecânicas, regras e formatos do jogo.",
+                descGuide: "Os conceitos básicos para começar a jogar em 5 minutos.",
+                descLore: "Descubra a história de Vergel, da Fenda e dos 5 clãs.",
+                footerText: "Todos os direitos reservados. Um jogo de cartas colecionáveis competitivo.",
+                privacyLink: "Política de Privacidade", termsLink: "Termos de Serviço",
+                ...EN_ASSETS
+            },
+            fr: {
+                navWiki: "Wiki", navNews: "Actualités",
+                heroTitle: "PÁRAMO <span>CCG</span>",
+                heroSubtitle: "Survivez dans les terres désolées. Dominez la Brèche. Le JCC tactique compétitif.",
+                btnSteam: "Jouer sur Steam", btnAndroid: "Jouer sur Google Play",
+                loreText: "Le monde parfait de Vergel s'est déchiré lorsque la Brèche s'est ouverte, vomissant des monstres interdimensionnels. Dans une tentative désespérée, les dirigeants mondiaux ont déclenché une guerre nucléaire. Il ne reste désormais que Páramo : une terre radioactive où seuls les plus forts survivent. Choisissez votre clan. Construisez votre deck. Prouvez qui règne sur le désert.",
+                clansTitle: "Choisissez votre Clan",
+                featSocialTitle: "SOCIAL", featSocialDesc: "Jouez avec vos amis et alliances",
+                featCompTitle: "COMPÉTITIF", featCompDesc: "Tournois, draft, classements et trophées",
+                featFairTitle: "ÉQUITABLE", featFairDesc: "Créez et détruisez vos cartes",
+                featFunTitle: "AMUSANT", featFunDesc: "Gameplay rapide et exigeant",
+                featBalTitle: "ÉQUILIBRÉ", featBalDesc: "Protection contre les doublons et cartes premium",
+                featDeepTitle: "PROFOND", featDeepDesc: "50 cartes par deck, 1 Enclave et 1 chef principal",
+                clanAsfalto: "Asphalte", resAsfalto: "Ressource : Essence", descAsfalto: "Nomades motorisés. Vitesse mortelle et raids éclair.",
+                clanPolvora: "Poudre", resPolvora: "Ressource : Métal", descPolvora: "Ingénieurs militarisés. Bunkers, pièges et artillerie lourde.",
+                clanSombra: "Ombre", resSombra: "Ressource : Datura", descSombra: "Cultistes mystiques. Magie noire et aberrations contrôlées.",
+                clanHorda: "Horde", resHorda: "Ressource : Sang", descHorda: "Force brute. Orcs, gobelins et bêtes sur des véhicules délabrés.",
+                clanAbismo: "Abîme", resAbismo: "Ressource : Éther", descAbismo: "Aberrations cosmiques. Manipulent les esprits et brisent les règles.",
+                downloadsTitle: "Documentation Officielle", docManual: "Livre de Règles", docGuide: "Guide Rapide", docLore: "Mythologie & Lore", btnDownload: "Télécharger PDF",
+                descManual: "Apprenez toutes les mécaniques, règles et formats du jeu.",
+                descGuide: "Les bases pour commencer à jouer en 5 minutes.",
+                descLore: "Découvrez l'histoire de Vergel, de la Brèche et des 5 clans.",
+                footerText: "Tous droits réservés. Un jeu de cartes à collectionner compétitif.",
+                privacyLink: "Politique de confidentialité", termsLink: "Conditions d'utilisation",
+                ...EN_ASSETS
+            },
+            de: {
+                navWiki: "Wiki", navNews: "News",
+                heroTitle: "PÁRAMO <span>CCG</span>",
+                heroSubtitle: "Überlebe im Ödland. Beherrsche den Riss. Das kompetitive Taktik-Sammelkartenspiel.",
+                btnSteam: "Auf Steam spielen", btnAndroid: "Bei Google Play spielen",
+                loreText: "Die perfekte Welt von Vergel zerbrach, als sich der Riss öffnete und interdimensionale Monster ausspie. In einem verzweifelten Versuch entfesselten die Weltführer einen Atomkrieg. Nun bleibt nur noch Páramo: ein radioaktives Ödland, in dem nur die Stärksten überleben. Wähle deinen Clan. Baue dein Deck. Beweise, wer das Ödland beherrscht.",
+                clansTitle: "Wähle deinen Clan",
+                featSocialTitle: "SOZIAL", featSocialDesc: "Spiele mit Freunden und Allianzen",
+                featCompTitle: "KOMPETITIV", featCompDesc: "Turniere, Draft, Ranglisten und Trophäen",
+                featFairTitle: "FAIR", featFairDesc: "Erschaffe und zerlege deine Karten",
+                featFunTitle: "SPASSIG", featFunDesc: "Schnelles und forderndes Gameplay",
+                featBalTitle: "AUSGEWOGEN", featBalDesc: "Duplikat- und Premiumkartenschutz",
+                featDeepTitle: "TIEFGRÜNDIG", featDeepDesc: "50 Karten pro Deck, 1 Enklave und 1 Hauptboss",
+                clanAsfalto: "Asphalt", resAsfalto: "Ressource: Benzin", descAsfalto: "Motorisierte Nomaden. Tödliche Geschwindigkeit und Blitzangriffe.",
+                clanPolvora: "Schießpulver", resPolvora: "Ressource: Metall", descPolvora: "Militarisierte Ingenieure. Bunker, Fallen und schwere Artillerie.",
+                clanSombra: "Schatten", resSombra: "Ressource: Stechapfel", descSombra: "Mystische Kultisten. Dunkle Magie und kontrollierte Aberrationen.",
+                clanHorda: "Horde", resHorda: "Ressource: Blut", descHorda: "Rohe Gewalt. Orks, Goblins und Bestien auf klapprigen Fahrzeugen.",
+                clanAbismo: "Abgrund", resAbismo: "Ressource: Äther", descAbismo: "Kosmische Aberrationen. Manipulieren den Geist und brechen Regeln.",
+                downloadsTitle: "Offizielle Dokumentation", docManual: "Regelbuch", docGuide: "Schnellstart", docLore: "Mythologie & Lore", btnDownload: "PDF herunterladen",
+                descManual: "Lerne alle Spielmechaniken, Regeln und Formate.",
+                descGuide: "Die Grundlagen, um in 5 Minuten loszulegen.",
+                descLore: "Entdecke die Geschichte von Vergel, dem Riss und den 5 Clans.",
+                footerText: "Alle Rechte vorbehalten. Ein kompetitives Sammelkartenspiel.",
+                privacyLink: "Datenschutz", termsLink: "Nutzungsbedingungen",
+                ...EN_ASSETS
+            },
+            it: {
+                navWiki: "Wiki", navNews: "Notizie",
+                heroTitle: "PÁRAMO <span>CCG</span>",
+                heroSubtitle: "Sopravvivi nella landa. Domina la Fenditura. Il GCC tattico competitivo.",
+                btnSteam: "Gioca su Steam", btnAndroid: "Gioca su Google Play",
+                loreText: "Il mondo perfetto di Vergel si lacerò quando la Fenditura si aprì, vomitando mostri interdimensionali. In un tentativo disperato, i leader mondiali scatenarono una guerra nucleare. Ora resta solo Páramo: una landa radioattiva dove sopravvive solo il più forte. Scegli il tuo clan. Costruisci il tuo mazzo. Dimostra chi comanda nella landa.",
+                clansTitle: "Scegli il tuo Clan",
+                featSocialTitle: "SOCIALE", featSocialDesc: "Gioca con amici e alleanze",
+                featCompTitle: "COMPETITIVO", featCompDesc: "Tornei, draft, classifiche e trofei",
+                featFairTitle: "EQUO", featFairDesc: "Crea e distruggi le tue carte",
+                featFunTitle: "DIVERTENTE", featFunDesc: "Gameplay veloce e avvincente",
+                featBalTitle: "BILANCIATO", featBalDesc: "Protezione doppioni e carte premium",
+                featDeepTitle: "PROFONDO", featDeepDesc: "50 carte per mazzo, 1 Enclave e 1 boss principale",
+                clanAsfalto: "Asfalto", resAsfalto: "Risorsa: Benzina", descAsfalto: "Nomadi motorizzati. Velocità letale e incursioni lampo.",
+                clanPolvora: "Polvere", resPolvora: "Risorsa: Metallo", descPolvora: "Ingegneri militarizzati. Bunker, trappole e artiglieria pesante.",
+                clanSombra: "Ombra", resSombra: "Risorsa: Stramonio", descSombra: "Cultisti mistici. Magia oscura e aberrazioni controllate.",
+                clanHorda: "Orda", resHorda: "Risorsa: Sangue", descHorda: "Forza bruta. Orchi, goblin e bestie su veicoli malconci.",
+                clanAbismo: "Abisso", resAbismo: "Risorsa: Etere", descAbismo: "Aberrazioni cosmiche. Manipolano la mente e infrangono le regole.",
+                downloadsTitle: "Documentazione Ufficiale", docManual: "Manuale delle Regole", docGuide: "Guida Rapida", docLore: "Mitologia & Lore", btnDownload: "Scarica PDF",
+                descManual: "Impara tutte le meccaniche, le regole e i formati del gioco.",
+                descGuide: "I concetti base per iniziare a giocare in 5 minuti.",
+                descLore: "Scopri la storia di Vergel, della Fenditura e dei 5 clan.",
+                footerText: "Tutti i diritti riservati. Un gioco di carte collezionabili competitivo.",
+                privacyLink: "Informativa sulla privacy", termsLink: "Termini di servizio",
+                ...EN_ASSETS
+            },
+            ja: {
+                navWiki: "Wiki", navNews: "ニュース",
+                heroTitle: "PÁRAMO <span>CCG</span>",
+                heroSubtitle: "荒野を生き延びろ。裂け目を制せよ。本格対戦タクティカルCCG。",
+                btnSteam: "Steamでプレイ", btnAndroid: "Google Playでプレイ",
+                loreText: "完璧な世界ヴェルヘルは、異次元の怪物を吐き出す「裂け目」が開いたことで引き裂かれた。絶望的な試みとして世界の指導者たちは核戦争を引き起こした。今残されているのはパラモ――最強の者だけが生き残る放射能の荒野だ。クランを選び、デッキを組み、荒野の覇者を証明せよ。",
+                clansTitle: "クランを選択",
+                featSocialTitle: "ソーシャル", featSocialDesc: "フレンドや同盟とプレイ",
+                featCompTitle: "競技性", featCompDesc: "トーナメント、ドラフト、ランキング、トロフィー",
+                featFairTitle: "公平", featFairDesc: "カードの作成と分解が可能",
+                featFunTitle: "爽快", featFunDesc: "スピーディで歯ごたえのあるゲームプレイ",
+                featBalTitle: "バランス", featBalDesc: "重複保護とプレミアムカード保護",
+                featDeepTitle: "奥深さ", featDeepDesc: "デッキ50枚、拠点1枚、メインボス1体",
+                clanAsfalto: "アスファルト", resAsfalto: "資源：ガソリン", descAsfalto: "機動力ある遊牧民。致死的な速さと電撃奇襲。",
+                clanPolvora: "火薬", resPolvora: "資源：金属", descPolvora: "武装技術者。バンカー、罠、重砲撃。",
+                clanSombra: "影", resSombra: "資源：ダチュラ", descSombra: "神秘のカルト教団。闇魔法と使役された異形。",
+                clanHorda: "ホード", resHorda: "資源：血", descHorda: "圧倒的暴力。オークやゴブリン、改造車両の野獣。",
+                clanAbismo: "アビス", resAbismo: "資源：エーテル", descAbismo: "宇宙的異形。精神を操り、ルールを破壊する。",
+                downloadsTitle: "公式ドキュメント", docManual: "ルールブック", docGuide: "クイックガイド", docLore: "神話と世界観", btnDownload: "PDFをダウンロード",
+                descManual: "すべてのメカニクス、ルール、フォーマットを解説。",
+                descGuide: "5分で遊び始めるための基本ガイド。",
+                descLore: "ヴェルヘル、裂け目、5大クランの歴史を知ろう。",
+                footerText: "All rights reserved. 対戦型コレクティブルカードゲーム。",
+                privacyLink: "プライバシーポリシー", termsLink: "利用規約",
+                ...EN_ASSETS
+            },
+            zh: {
+                navWiki: "Wiki", navNews: "新闻",
+                heroTitle: "PÁRAMO <span>CCG</span>",
+                heroSubtitle: "在废土中求生，主宰裂隙。硬核竞技战术集换式卡牌游戏。",
+                btnSteam: "在 Steam 上游玩", btnAndroid: "在 Google Play 上游玩",
+                loreText: "当“裂隙”撕裂天空、涌出跨维度怪物时，完美世界维尔赫尔就此崩塌。在绝望之中，世界领袖发动了核战争。如今留下的只有帕拉莫：一片唯有强者才能生存的辐射废土。选择你的氏族，构筑你的卡组，证明谁才是废土之王。",
+                clansTitle: "选择你的氏族",
+                featSocialTitle: "社交", featSocialDesc: "与好友和联盟一起游玩",
+                featCompTitle: "竞技", featCompDesc: "锦标赛、轮抽、排行榜与奖杯",
+                featFairTitle: "公平", featFairDesc: "自由合成与分解卡牌",
+                featFunTitle: "爽快", featFunDesc: "节奏紧凑且富有挑战性的玩法",
+                featBalTitle: "平衡", featBalDesc: "重复卡牌与闪卡保护机制",
+                featDeepTitle: "深度", featDeepDesc: "50张卡组、1张据点与1名主首领",
+                clanAsfalto: "沥青", resAsfalto: "资源：汽油", descAsfalto: "摩托游牧民。致命速度与闪电突袭。",
+                clanPolvora: "火药", resPolvora: "资源：金属", descPolvora: "军事化工程师。地堡、陷阱与重型火炮。",
+                clanSombra: "暗影", resSombra: "资源：曼陀罗", descSombra: "神秘教徒。黑暗魔法与受控畸变体。",
+                clanHorda: "部落", resHorda: "资源：鲜血", descHorda: "蛮力碾压。兽人、地精与废铁战车上的巨兽。",
+                clanAbismo: "深渊", resAbismo: "资源：以太", descAbismo: "宇宙畸变体。操控心智并打破规则。",
+                downloadsTitle: "官方文档", docManual: "规则手册", docGuide: "快速指南", docLore: "神话与背景", btnDownload: "下载 PDF",
+                descManual: "了解全部游戏机制、规则与赛制。",
+                descGuide: "5分钟快速上手的基本概念。",
+                descLore: "探索维尔赫尔、裂隙与五大氏族的历史。",
+                footerText: "保留所有权利。一款竞技性集换式卡牌游戏。",
+                privacyLink: "隐私政策", termsLink: "服务条款",
+                ...EN_ASSETS
+            },
+            ru: {
+                navWiki: "Вики", navNews: "Новости",
+                heroTitle: "PÁRAMO <span>CCG</span>",
+                heroSubtitle: "Выживи в пустоши. Покори Разлом. Соревновательная тактическая ККИ.",
+                btnSteam: "Играть в Steam", btnAndroid: "Играть в Google Play",
+                loreText: "Идеальный мир Верхеля раскололся, когда открылся Разлом, извергая межпространственных чудовищ. В отчаянии мировые лидеры развязали ядерную войну. Теперь остался лишь Парамо — радиоактивная пустошь, где выживает только сильнейший. Выбери свой клан. Собери колоду. Докажи, кто правит пустошью.",
+                clansTitle: "Выбери свой клан",
+                featSocialTitle: "ОБЩЕНИЕ", featSocialDesc: "Играй с друзьями и в альянсах",
+                featCompTitle: "КИБЕРСПОРТ", featCompDesc: "Турниры, драфт, рейтинги и трофеи",
+                featFairTitle: "ЧЕСТНОСТЬ", featFairDesc: "Создавай и распыляй карты",
+                featFunTitle: "ДИНАМИКА", featFunDesc: "Быстрый и напряжённый геймплей",
+                featBalTitle: "БАЛАНС", featBalDesc: "Защита от дубликатов и премиум-карт",
+                featDeepTitle: "ГЛУБИНА", featDeepDesc: "50 карт в колоде, 1 Анклав и 1 главный босс",
+                clanAsfalto: "Асфальт", resAsfalto: "Ресурс: Бензин", descAsfalto: "Моторизованные кочевники. Смертельная скорость и молниеносные рейды.",
+                clanPolvora: "Порох", resPolvora: "Ресурс: Металл", descPolvora: "Военные инженеры. Бункеры, ловушки и тяжёлая артиллерия.",
+                clanSombra: "Тень", resSombra: "Ресурс: Дурман", descSombra: "Мистические культисты. Тёмная магия и подконтрольные аберрации.",
+                clanHorda: "Орда", resHorda: "Ресурс: Кровь", descHorda: "Грубая сила. Орки, гоблины и звери на разваливающемся транспорте.",
+                clanAbismo: "Бездна", resAbismo: "Ресурс: Эфир", descAbismo: "Космические аберрации. Управляют разумом и ломают правила.",
+                downloadsTitle: "Официальная документация", docManual: "Книга правил", docGuide: "Краткое руководство", docLore: "Мифология и лор", btnDownload: "Скачать PDF",
+                descManual: "Изучи все механики, правила и форматы игры.",
+                descGuide: "Основы игры, чтобы начать за 5 минут.",
+                descLore: "Узнай историю Верхеля, Разлома и 5 кланов.",
+                footerText: "Все права защищены. Соревновательная коллекционная карточная игра.",
+                privacyLink: "Политика конфиденциальности", termsLink: "Условия использования",
+                ...EN_ASSETS
+            }
+        });
+
         // --- Lógica de Funcionamiento ---
         let currentLang = 'es';
 
@@ -941,6 +1150,7 @@
         });
 
         function setLanguage(lang) {
+            if (!translations[lang]) lang = 'en';
             currentLang = lang;
             document.documentElement.lang = lang;
 
@@ -972,30 +1182,25 @@
             document.getElementById('img-clan-horda').src = translations[lang].imgHorda;
             document.getElementById('img-clan-abismo').src = translations[lang].imgAbismo;
 
-            // Botón toggle
-            const btn = document.getElementById('lang-toggle');
-            btn.textContent = lang === 'es' ? 'EN' : 'ES';
+            // Selector de idioma
+            const sel = document.getElementById('lang-select');
+            if (sel) sel.value = lang;
 
             localStorage.setItem('paramo-lang', lang);
         }
 
         function initLanguage() {
-            const savedLang = localStorage.getItem('paramo-lang');
-            if (savedLang) {
+            const savedLang = (localStorage.getItem('paramo-lang') || '').toLowerCase().slice(0, 2);
+            if (savedLang && translations[savedLang]) {
                 setLanguage(savedLang);
             } else {
-                const browserLang = navigator.language || navigator.userLanguage;
-                if (browserLang.toLowerCase().startsWith('es')) {
-                    setLanguage('es');
-                } else {
-                    setLanguage('en');
-                }
+                const browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase().slice(0, 2);
+                setLanguage(translations[browserLang] ? browserLang : 'en');
             }
         }
 
-        document.getElementById('lang-toggle').addEventListener('click', () => {
-            const newLang = currentLang === 'es' ? 'en' : 'es';
-            setLanguage(newLang);
+        document.getElementById('lang-select').addEventListener('change', (e) => {
+            setLanguage(e.target.value);
         });
 
         document.addEventListener('DOMContentLoaded', initLanguage);
