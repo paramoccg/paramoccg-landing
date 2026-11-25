@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias y Notas del Parche — Páramo CCG</title>
+    <meta name="description" content="Todas las noticias oficiales, notas del parche y actualizaciones de Páramo CCG.">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0a0a0c;
+            --bg-card: #15161a;
+            --text-main: #e0e0e0;
+            --text-muted: #8a8d91;
+            --accent-green: #39ff14;
+            --accent-orange: #ff6b00;
+            --font-heading: 'Orbitron', sans-serif;
+            --font-body: 'Rajdhani', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(57, 255, 20, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(255, 107, 0, 0.05) 0%, transparent 50%);
+            background-attachment: fixed;
+        }
+        h1, h2, h3 { font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 2px; }
+        a { text-decoration: none; color: inherit; }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 12, 0.88);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--accent-green);
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.45);
+        }
+        .nav-right { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+        .nav-links { display: flex; align-items: center; gap: 0.75rem; }
+        .nav-links a {
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
+        }
+        .lang-select {
+            background: #121318;
+            border: 2px solid var(--text-muted);
+            color: var(--text-main);
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: var(--font-heading);
+            font-size: 0.78rem;
+            font-weight: 700;
+            outline: none;
+        }
+        .lang-select:hover, .lang-select:focus { border-color: var(--accent-green); color: var(--accent-green); }
+
+        main {
+            flex: 1;
+            width: 100%;
+            max-width: 980px;
+            margin: 6.5rem auto 3rem;
+            padding: 0 1.25rem;
+        }
+        .page-hero {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .page-hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.7rem);
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .page-hero h1 span { color: var(--accent-orange); }
+        .page-hero p { color: var(--text-muted); font-size: 1.15rem; }
+
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            background: rgba(21, 22, 26, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 10px;
+            padding: 0.85rem 1rem;
+        }
+        .tag-filters { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+        .tag-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: var(--text-muted);
+            font-family: var(--font-heading);
+            font-size: 0.72rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 0.38rem 0.75rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .tag-btn:hover { border-color: var(--accent-orange); color: #fff; }
+        .tag-btn.active {
+            background: rgba(57, 255, 20, 0.14);
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+        .search-input {
+            background: #0d0e12;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: var(--text-main);
+            border-radius: 8px;
+            padding: 0.45rem 0.85rem;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            min-width: 220px;
+            outline: none;
+        }
+        .search-input:focus { border-color: var(--accent-green); }
+
+        .news-list { display: flex; flex-direction: column; gap: 1.15rem; }
+        .news-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-left: 4px solid var(--accent-orange);
+            border-radius: 10px;
+            padding: 1.35rem 1.5rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .news-card.pinned {
+            border-left-color: var(--accent-green);
+            background: linear-gradient(135deg, rgba(57, 255, 20, 0.05), var(--bg-card) 35%);
+        }
+        .news-card:hover { transform: translateY(-2px); border-color: rgba(255, 255, 255, 0.18); }
+        .news-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.55rem;
+            margin-bottom: 0.65rem;
+        }
+        .badge {
+            font-family: var(--font-heading);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 0.22rem 0.6rem;
+            border-radius: 5px;
+            background: rgba(255, 107, 0, 0.16);
+            color: #ffb27a;
+            border: 1px solid rgba(255, 107, 0, 0.35);
+        }
+        .badge.patch { background: rgba(56, 189, 248, 0.15); color: #7dd3fc; border-color: rgba(56, 189, 248, 0.35); }
+        .badge.pinned { background: rgba(57, 255, 20, 0.16); color: var(--accent-green); border-color: rgba(57, 255, 20, 0.38); }
+        .news-date { margin-left: auto; color: var(--text-muted); font-size: 0.95rem; font-weight: 600; }
+        .news-title {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: #fff;
+            margin-bottom: 0.6rem;
+            letter-spacing: 1px;
+        }
+        .news-body {
+            font-size: 1.12rem;
+            color: #d3d6dc;
+            white-space: pre-line;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: var(--bg-card);
+            border: 1px dashed rgba(255, 255, 255, 0.14);
+            border-radius: 10px;
+            color: var(--text-muted);
+            font-size: 1.15rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 5%;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        @media (max-width: 640px) {
+            .logo { font-size: 1.1rem; }
+            .nav-links a { font-size: 0.7rem; padding: 0.3rem 0.5rem; }
+            .news-date { margin-left: 0; width: 100%; }
+            .search-input { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">PÁRAMO CCG</a>
+        <div class="nav-right">
+            <nav class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> <span data-ui="home">Inicio</span></a>
+                <a href="https://wiki.paramoccg.com/" target="_blank" rel="noopener"><i class="fas fa-book-open"></i> <span>Wiki</span></a>
+                <a href="noticias.html" class="active"><i class="fas fa-newspaper"></i> <span data-ui="news">Noticias</span></a>
+            </nav>
+            <select id="langSelect" class="lang-select" aria-label="Idioma">
+                <option value="es">ES</option>
+                <option value="en">EN</option>
+                <option value="pt">PT</option>
+                <option value="fr">FR</option>
+                <option value="de">DE</option>
+                <option value="it">IT</option>
+                <option value="ja">JA</option>
+                <option value="zh">ZH</option>
+                <option value="ru">RU</option>
+            </select>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-hero">
+            <h1 id="pageTitle">NOTICIAS Y <span>PARCHES</span></h1>
+            <p id="pageSub">Comunicados oficiales, notas del parche y novedades del yermo.</p>
+        </div>
+
+        <div class="toolbar">
+            <div class="tag-filters" id="tagFilters"></div>
+            <input type="search" id="searchBox" class="search-input" placeholder="Buscar publicaciones..." />
+        </div>
+
+        <div id="newsContainer" class="news-list">
+            <div class="empty-state" id="loadingMsg">Cargando publicaciones...</div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Páramo CCG — <a href="index.html" style="color:var(--accent-green)">paramoccg.com</a></p>
+    </footer>
+
+    <script>
+        const API_URL = "https://api.paramoccg.com/api/news";
+        const FALLBACK_URL = "https://api.paramoccg.com/api/cc/GetGameNews";
+        const SUPPORTED = ["es", "en", "pt", "fr", "de", "it", "ja", "zh", "ru"];
+
+        const UI = {
+            es: { home: "Inicio", news: "Noticias", title: "NOTICIAS Y <span>PARCHES</span>", sub: "Comunicados oficiales, notas del parche y novedades del yermo.", all: "Todas", pinned: "Fijada", search: "Buscar publicaciones...", loading: "Cargando publicaciones...", empty: "No hay publicaciones que coincidan.", err: "No se pudieron cargar las noticias en este momento." },
+            en: { home: "Home", news: "News", title: "NEWS & <span>PATCH NOTES</span>", sub: "Official announcements, patch notes, and wasteland updates.", all: "All", pinned: "Pinned", search: "Search posts...", loading: "Loading posts...", empty: "No matching posts found.", err: "Could not load news right now." },
+            pt: { home: "Início", news: "Notícias", title: "NOTÍCIAS E <span>PATCHES</span>", sub: "Comunicados oficiais, notas de atualização e novidades.", all: "Todas", pinned: "Fixada", search: "Buscar publicações...", loading: "Carregando publicações...", empty: "Nenhuma publicação encontrada.", err: "Não foi possível carregar as notícias." },
+            fr: { home: "Accueil", news: "Actualités", title: "ACTUS & <span>PATCHS</span>", sub: "Annonces officielles, notes de patch et mises à jour.", all: "Toutes", pinned: "Épinglée", search: "Rechercher...", loading: "Chargement...", empty: "Aucune publication trouvée.", err: "Impossible de charger les actualités." },
+            de: { home: "Start", news: "News", title: "NEWS & <span>PATCHNOTES</span>", sub: "Offizielle Ankündigungen, Patchnotes und Updates.", all: "Alle", pinned: "Angepinnt", search: "Beiträge suchen...", loading: "Beiträge werden geladen...", empty: "Keine passenden Beiträge.", err: "News konnten nicht geladen werden." },
+            it: { home: "Home", news: "Notizie", title: "NOTIZIE E <span>PATCH</span>", sub: "Comunicati ufficiali, note della patch e aggiornamenti.", all: "Tutte", pinned: "In evidenza", search: "Cerca...", loading: "Caricamento...", empty: "Nessuna pubblicazione trovata.", err: "Impossibile caricare le notizie." },
+            ja: { home: "ホーム", news: "ニュース", title: "ニュース＆<span>パッチノート</span>", sub: "公式お知らせ、パッチノート、アップデート情報。", all: "すべて", pinned: "固定", search: "検索...", loading: "読み込み中...", empty: "該当する記事がありません。", err: "ニュースを読み込めませんでした。" },
+            zh: { home: "首页", news: "新闻", title: "新闻与<span>补丁说明</span>", sub: "官方公告、补丁说明和废土更新。", all: "全部", pinned: "置顶", search: "搜索公告...", loading: "正在加载...", empty: "没有匹配的公告。", err: "暂时无法加载新闻。" },
+            ru: { home: "Главная", news: "Новости", title: "НОВОСТИ И <span>ПАТЧИ</span>", sub: "Официальные объявления, патчноуты и обновления.", all: "Все", pinned: "Закреплено", search: "Поиск...", loading: "Загрузка...", empty: "Публикации не найдены.", err: "Не удалось загрузить новости." }
+        };
+
+        const TAG_LABELS = {
+            "Novedad": { es: "Novedad", en: "News", pt: "Novidade", fr: "Nouveauté", de: "Neuheit", it: "Novità", ja: "新着", zh: "新闻", ru: "Новость" },
+            "Parche": { es: "Parche", en: "Patch", pt: "Patch", fr: "Patch", de: "Patch", it: "Patch", ja: "パッチ", zh: "补丁", ru: "Патч" },
+            "Actualización": { es: "Actualización", en: "Update", pt: "Atualização", fr: "Mise à jour", de: "Update", it: "Aggiornamento", ja: "アップデート", zh: "更新", ru: "Обновление" },
+            "Torneo": { es: "Torneo", en: "Tournament", pt: "Torneio", fr: "Tournoi", de: "Turnier", it: "Torneo", ja: "トーナメント", zh: "锦标赛", ru: "Турнир" },
+            "Evento": { es: "Evento", en: "Event", pt: "Evento", fr: "Événement", de: "Event", it: "Evento", ja: "イベント", zh: "活动", ru: "Событие" },
+            "Mantenimiento": { es: "Mantenimiento", en: "Maintenance", pt: "Manutenção", fr: "Maintenance", de: "Wartung", it: "Manutenzione", ja: "メンテナンス", zh: "维护", ru: "Техработы" }
+        };
+
+        let allItems = [];
+        let activeTag = "ALL";
+        let currentLang = "es";
+
+        function detectLang() {
+            const saved = (localStorage.getItem("paramo-lang") || "").toLowerCase().slice(0, 2);
+            if (SUPPORTED.includes(saved)) return saved;
+            const nav = (navigator.language || "es").toLowerCase().slice(0, 2);
+            return SUPPORTED.includes(nav) ? nav : "es";
+        }
+
+        function esc(s) {
+            return String(s || "").replace(/[&<>"]/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
+        }
+
+        function pickLocalized(item, field, lang) {
+            const dict = item[field === "title" ? "titles" : "bodies"];
+            if (dict && typeof dict === "object") {
+                if (dict[lang]) return dict[lang];
+                if (dict[lang.toUpperCase()]) return dict[lang.toUpperCase()];
+            }
+            if (lang === "en") {
+                const enVal = field === "title" ? item.titleEn : item.bodyEn;
+                if (enVal) return enVal;
+            }
+            return (field === "title" ? item.title : item.body) || "";
+        }
+
+        function formatDate(iso, lang) {
+            if (!iso) return "";
+            const d = new Date(iso);
+            if (isNaN(d.getTime())) return iso;
+            try {
+                return d.toLocaleDateString(lang === "zh" ? "zh-CN" : lang, { year: "numeric", month: "short", day: "numeric" });
+            } catch {
+                return d.toISOString().slice(0, 10);
+            }
+        }
+
+        function tagLabel(rawTag, lang) {
+            const map = TAG_LABELS[rawTag];
+            return (map && map[lang]) || rawTag || "Novedad";
+        }
+
+        function renderTags() {
+            const box = document.getElementById("tagFilters");
+            const ui = UI[currentLang] || UI.es;
+            const tags = ["ALL", ...new Set(allItems.map(x => x.tag || "Novedad"))];
+            box.innerHTML = "";
+            for (const t of tags) {
+                const b = document.createElement("button");
+                b.className = "tag-btn" + (activeTag === t ? " active" : "");
+                b.textContent = t === "ALL" ? ui.all : tagLabel(t, currentLang);
+                b.onclick = () => { activeTag = t; renderTags(); renderNews(); };
+                box.appendChild(b);
+            }
+        }
+
+        function renderNews() {
+            const ui = UI[currentLang] || UI.es;
+            const box = document.getElementById("newsContainer");
+            const q = document.getElementById("searchBox").value.trim().toLowerCase();
+
+            const filtered = allItems.filter(item => {
+                if (activeTag !== "ALL" && (item.tag || "Novedad") !== activeTag) return false;
+                if (!q) return true;
+                const t = pickLocalized(item, "title", currentLang).toLowerCase();
+                const b = pickLocalized(item, "body", currentLang).toLowerCase();
+                return t.includes(q) || b.includes(q);
+            });
+
+            if (!filtered.length) {
+                box.innerHTML = `<div class="empty-state">${esc(ui.empty)}</div>`;
+                return;
+            }
+
+            box.innerHTML = filtered.map(item => {
+                const title = pickLocalized(item, "title", currentLang);
+                const body = pickLocalized(item, "body", currentLang);
+                const rawTag = item.tag || "Novedad";
+                const isPatch = rawTag === "Parche" || rawTag === "Actualización";
+                return `
+                    <article class="news-card ${item.pinned ? "pinned" : ""}">
+                        <div class="news-meta">
+                            <span class="badge ${isPatch ? "patch" : ""}">${esc(tagLabel(rawTag, currentLang))}</span>
+                            ${item.pinned ? `<span class="badge pinned">${esc(ui.pinned)}</span>` : ""}
+                            <span class="news-date">${esc(formatDate(item.publishedUtc, currentLang))}</span>
+                        </div>
+                        <h2 class="news-title">${esc(title)}</h2>
+                        <div class="news-body">${esc(body)}</div>
+                    </article>
+                `;
+            }).join("");
+        }
+
+        function applyLang(lang) {
+            currentLang = SUPPORTED.includes(lang) ? lang : "es";
+            document.documentElement.lang = currentLang;
+            document.getElementById("langSelect").value = currentLang;
+            localStorage.setItem("paramo-lang", currentLang);
+            const ui = UI[currentLang] || UI.es;
+            document.querySelector('[data-ui="home"]').textContent = ui.home;
+            document.querySelector('[data-ui="news"]').textContent = ui.news;
+            document.getElementById("pageTitle").innerHTML = ui.title;
+            document.getElementById("pageSub").textContent = ui.sub;
+            document.getElementById("searchBox").placeholder = ui.search;
+            renderTags();
+            if (allItems.length) renderNews();
+        }
+
+        async function loadNews() {
+            const ui = UI[currentLang] || UI.es;
+            const box = document.getElementById("newsContainer");
+            try {
+                let res = await fetch(API_URL, { cache: "no-store" });
+                if (!res.ok) {
+                    res = await fetch(FALLBACK_URL, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: "{}"
+                    });
+                }
+                const data = await res.json();
+                allItems = Array.isArray(data.items) ? data.items : [];
+                renderTags();
+                renderNews();
+            } catch {
+                box.innerHTML = `<div class="empty-state">${esc(ui.err)}</div>`;
+            }
+        }
+
+        document.getElementById("langSelect").addEventListener("change", e => applyLang(e.target.value));
+        document.getElementById("searchBox").addEventListener("input", renderNews);
+        applyLang(detectLang());
+        loadNews();
+    </script>
+</body>
+</html>

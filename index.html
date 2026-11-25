@@ -7,7 +7,7 @@
     <meta name="description" content="Sobrevive en el yermo. Páramo CCG es un juego de cartas coleccionables PVP competitivo. Elige tu clan y domina La Brecha.">
     
     <!-- Favicon -->
-    <link rel="icon" href="favicon.png" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -118,6 +118,35 @@
 
         .header-links a:hover {
             color: var(--accent-orange);
+        }
+
+        .nav-page-links {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .nav-page-links a {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-main);
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .nav-page-links a:hover {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.25);
         }
 
         /* --- Hero Section --- */
@@ -512,6 +541,14 @@
             .header-links {
                 display: none;
             }
+            .nav-page-links {
+                gap: 0.5rem;
+            }
+            .nav-page-links a {
+                font-size: 0.72rem;
+                padding: 0.3rem 0.55rem;
+                letter-spacing: 1px;
+            }
             #lore p {
                 font-size: 1.1rem;
             }
@@ -558,6 +595,10 @@
     <header>
         <div class="logo">PÁRAMO CCG</div>
         <div class="nav-right">
+            <nav class="nav-page-links" aria-label="Navegación">
+                <a href="https://wiki.paramoccg.com/" target="_blank" rel="noopener"><i class="fas fa-book-open"></i> <span data-i18n="navWiki">Wiki</span></a>
+                <a href="noticias.html"><i class="fas fa-newspaper"></i> <span data-i18n="navNews">Noticias</span></a>
+            </nav>
             <div class="header-links">
                 <a href="#" id="steam-link" title="Steam"><i class="fab fa-steam"></i></a>
                 <a href="#" id="android-link" title="Google Play"><i class="fab fa-google-play"></i></a>
@@ -713,11 +754,13 @@
 
     <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 Páramo CCG. <span data-i18n="footerText">Todos los derechos reservados. Un juego de cartas coleccionables competitivo.</span></p>contact@paramoccg.com
-        <p style="margin-top: 0.6rem;">
+        <p>&copy; 2026 Páramo CCG. <span data-i18n="footerText">Todos los derechos reservados. Un juego de cartas coleccionables competitivo.</span></p>
+        <p style="margin-top: 0.65rem;">
             <a href="privacidad.html" data-i18n="privacyLink" style="color: var(--accent-green); text-decoration: underline;">Política de privacidad</a>
             &nbsp;&middot;&nbsp;
             <a href="terminos.html" data-i18n="termsLink" style="color: var(--accent-green); text-decoration: underline;">Términos del servicio</a>
+            &nbsp;&middot;&nbsp;
+            <a href="mailto:contact@paramoccg.com" style="color: var(--text-muted);">contact@paramoccg.com</a>
         </p>
     </footer>
 
@@ -728,6 +771,8 @@
         const translations = {
             es: {
                 // Textos Generales
+                navWiki: "Wiki",
+                navNews: "Noticias",
                 heroTitle: "PÁRAMO <span>CCG</span>",
                 heroSubtitle: "Sobrevive en el yermo. Domina La Brecha. El CCG táctico competitivo.",
                 btnSteam: "Jugar en Steam",
@@ -800,6 +845,8 @@
             },
             en: {
                 // General Texts
+                navWiki: "Wiki",
+                navNews: "News",
                 heroTitle: "PÁRAMO <span>CCG</span>",
                 heroSubtitle: "Survive the wasteland. Dominate the Rift. The competitive tactical CCG.",
                 btnSteam: "Play on Steam",
